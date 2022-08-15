@@ -1,8 +1,7 @@
-import 'package:conrev/Screen/MainScreen.dart';
+import 'package:conrev/helper/login_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:sizer/sizer.dart';
-
 import '../constant/CustomLottie.dart';
 import '../constant/CustomStyle.dart';
 import '../custom/custom.dart';
@@ -15,107 +14,92 @@ class LoginScreen extends ConsumerStatefulWidget {
 }
 
 class _LoginScreenState extends ConsumerState<LoginScreen> {
-  TextEditingController _textcontroller1 = TextEditingController();
-  TextEditingController _textcontroller2 = TextEditingController();
   bool _isHidden = true;
-      void _togglePasswordView() {
+  void _togglePasswordView() {
     setState(() {
-        _isHidden = !_isHidden;
+      _isHidden = !_isHidden;
     });
-}
+  }
+
   @override
   Widget build(BuildContext context) {
+    final helper = ref.read(loginHelper);
+
     return Scaffold(
-        backgroundColor: Customcolor().theam,
-        //  appBar: AppBar(),
-        body: SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              SizedBox(height: 10.h,),
-              Text(
-                'Conrev',
-                style: CustomFont().Logofontstyle,
-              ),
-              SizedBox(
-                height: 15,
-              ),
-             LottiesImage(). login,
-              textField(
-                false,
-                _textcontroller1,
-                'Username',
-              ),
-              textField(
-                true,
-                _textcontroller2,
-                'Password',
-              ),
-               SizedBox(
-            height: 40,
-          ),
-              next(),
-                SizedBox(
-                height: 50,
-              ),
-            ],
-          ),
-        ));
+      backgroundColor: Customcolor().theam,
+      body: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            SizedBox(height: 10.h),
+            Text(
+              'Conrev',
+              style: CustomFont().Logofontstyle,
+            ),
+            SizedBox(height: 15),
+            LottiesImage().login,
+            textField(false, helper.username, 'Username'),
+            textField(true, helper.password, 'Password'),
+            SizedBox(height: 40),
+            next(),
+            SizedBox(height: 50),
+          ],
+        ),
+      ),
+    );
   }
 
   Widget textField(
-    bool secure,
-    TextEditingController controller, String placeholder) {
+      bool secure, TextEditingController controller, String placeholder) {
     return Column(
-      
-   //   mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        // SizedBox(height: 30,),
-
-        SizedBox(
-          height: 10,
-        ),
+        SizedBox(height: 10),
         Container(
-            margin: EdgeInsets.only(left: 10, top: 10, right: 8.sp),
-            // width: 51.w,
-            height: 15.w,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(50),
-              color: Colors.white,
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.black26,
-                  spreadRadius: 1,
-                  blurRadius: 5,
-                  offset: Offset(2, 2), // changes position of shadow
-                ),
-              ],
+          margin: EdgeInsets.only(left: 10, top: 10, right: 8.sp),
+          height: 15.w,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(50),
+            color: Colors.white,
+            boxShadow: [
+              BoxShadow(
+                color: Colors.black26,
+                spreadRadius: 1,
+                blurRadius: 5,
+                offset: Offset(2, 2),
+              ),
+            ],
+          ),
+          child: TextField(
+            keyboardType: TextInputType.text,
+            controller: controller,
+            obscureText: secure == true ? _isHidden : false,
+            decoration: InputDecoration(
+              suffix: secure == true
+                  ? InkWell(
+                      onTap: _togglePasswordView,
+                      child: Icon(
+                        _isHidden ? Icons.visibility : Icons.visibility_off,
+                      ),
+                    )
+                  : null,
+              border: InputBorder.none,
+              hintText: placeholder,
+              hintStyle: TextStyle(
+                color: Color(0xffABB4BD),
+                fontFamily: 'Gilroy',
+                fontSize: 15,
+                fontWeight: FontWeight.w700,
+              ),
+              contentPadding: EdgeInsets.only(
+                right: 20,
+                left: 20,
+                top: secure == true ? 10 : 19,
+                bottom: 7,
+              ),
             ),
-            child: TextField(
-                keyboardType: TextInputType.text,
-                controller: controller,
-                obscureText:secure==true? _isHidden:false,
-                decoration: InputDecoration(
-                  suffix:secure==true? InkWell(
-                  onTap: _togglePasswordView,  /// This is Magical Function
-                  child: Icon(
-                    _isHidden ?         /// CHeck Show & Hide.
-                     Icons.visibility :
-                     Icons.visibility_off,
-                  ),
-                ):null,
-                  border: InputBorder.none,
-                  hintText: placeholder,
-                  hintStyle: TextStyle(
-                      color: Color(0xffABB4BD),
-                      fontFamily: 'Gilroy',
-                      fontSize: 15,
-                      fontWeight: FontWeight.w700),
-                  contentPadding: EdgeInsets.only(
-                    right: 20,
-                    left: 20, top:secure==true? 10:19, bottom: 7),
-                ))),
+          ),
+        ),
       ],
     );
   }
@@ -125,17 +109,14 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
       margin: const EdgeInsets.symmetric(horizontal: 15, vertical: 20),
       child: MaterialButton(
         onPressed: () {
-           Navigator.push(context,
-                              MaterialPageRoute(builder: ((context) {
-                            return MainScreen();
-                          })));
+          ref.read(loginHelper).login(context);
         },
         child: Padding(
           padding: const EdgeInsets.symmetric(vertical: 18),
           child: Text(
             'SignIn',
             style: TextStyle(
-              color:Customcolor().theam,
+              color: Customcolor().theam,
               fontSize: 12.sp,
               fontWeight: FontWeight.bold,
               letterSpacing: .5,
@@ -144,7 +125,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
         ),
         minWidth: 100.w,
         elevation: 5,
-       color: Colors.white,
+        color: Colors.white,
         shape: RoundedRectangleBorder(
           borderRadius: const BorderRadius.all(Radius.circular(50.0)),
         ),

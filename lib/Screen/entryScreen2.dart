@@ -8,6 +8,7 @@ import '../custom/custom.dart';
 import 'package:date_time_picker/date_time_picker.dart';
 
 import 'display.dart';
+
 class EntryNextScreen extends ConsumerStatefulWidget {
   final String? restorationId;
   const EntryNextScreen({Key? key, required this.restorationId})
@@ -18,12 +19,27 @@ class EntryNextScreen extends ConsumerStatefulWidget {
       _EntryNextScreenState();
 }
 
-class _EntryNextScreenState extends ConsumerState<EntryNextScreen>
-    {
-  List list = ['P', "M", "N",];
-  List list1 =['P', "M", "N",];
-  List list2 = ['P', "M", "N",];
-  List list3 = ['P', "M", "N",];
+class _EntryNextScreenState extends ConsumerState<EntryNextScreen> {
+  List list = [
+    'P',
+    "M",
+    "N",
+  ];
+  List list1 = [
+    'P',
+    "M",
+    "N",
+  ];
+  List list2 = [
+    'P',
+    "M",
+    "N",
+  ];
+  List list3 = [
+    'P',
+    "M",
+    "N",
+  ];
   String? name1;
   // String? name2 = 'P1';
   // String? name3 = 'P';
@@ -33,7 +49,7 @@ class _EntryNextScreenState extends ConsumerState<EntryNextScreen>
 //   DateTime selectedDate = DateTime.now();
 //   final RestorableDateTime _selectedDate =
 //       RestorableDateTime(
-        
+
 //         //DateTime.now()
 //         DateTime(2021, 7, 25)
 //         );
@@ -84,17 +100,17 @@ class _EntryNextScreenState extends ConsumerState<EntryNextScreen>
 //       });
 //     }
 //   }
-DateTime _selectedDate=DateTime.now();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text('Conrev'),
         leading: IconButton(
-          onPressed: (){
-            Navigator.pop(context);
-          },
-          icon: Icon(Icons.arrow_back_ios_new_sharp)),
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            icon: Icon(Icons.arrow_back_ios_new_sharp)),
         centerTitle: true,
         automaticallyImplyLeading: false,
         backgroundColor: Customcolor().blacktheme,
@@ -117,73 +133,74 @@ DateTime _selectedDate=DateTime.now();
             child: SingleChildScrollView(
                 child: Column(
               children: [
-                 Column(
-      children: [
-        SizedBox(
-          height: 10,
-        ),
-        InkWell(
-          onTap: () {},
-          child: Container(
-            margin: EdgeInsets.only(left: 10, top: 10, right: 8.sp),
-            // width: 51.w,
-            height: 15.w,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(9),
-              color: Colors.white,
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.black12,
-                  spreadRadius: 1,
-                  blurRadius: 5,
-                  offset: Offset(2, 2), // changes position of shadow
-                ),
-              ],
-            ),
-            child: Row(
-              children: [
-                Container(
-                    height: double.infinity,
-                     width: 50,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.only(
-                          topLeft: Radius.circular(9),
-                          bottomLeft: Radius.circular(9)),
-                      color: Colors.grey[400],
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.black12,
-                          spreadRadius: 1,
-                          blurRadius: 5,
-                          offset: Offset(2, 2), // changes position of shadow
-                        ),
-                      ],
+                Column(
+                  children: [
+                    SizedBox(
+                      height: 10,
                     ),
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Icon(
-                   Icons.discount,
-                    color: Color.fromARGB(255, 138, 88, 247),
-                  ),
-                    )),
-                SizedBox(
-                  width: 10,
+                    InkWell(
+                      onTap: () {},
+                      child: Container(
+                        margin: EdgeInsets.only(left: 10, top: 10, right: 8.sp),
+                        // width: 51.w,
+                        height: 15.w,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(9),
+                          color: Colors.white,
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.black12,
+                              spreadRadius: 1,
+                              blurRadius: 5,
+                              offset:
+                                  Offset(2, 2), // changes position of shadow
+                            ),
+                          ],
+                        ),
+                        child: Row(
+                          children: [
+                            Container(
+                                height: double.infinity,
+                                width: 50,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.only(
+                                      topLeft: Radius.circular(9),
+                                      bottomLeft: Radius.circular(9)),
+                                  color: Colors.grey[400],
+                                  boxShadow: [
+                                    BoxShadow(
+                                      color: Colors.black12,
+                                      spreadRadius: 1,
+                                      blurRadius: 5,
+                                      offset: Offset(
+                                          2, 2), // changes position of shadow
+                                    ),
+                                  ],
+                                ),
+                                child: Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Icon(
+                                    Icons.discount,
+                                    color: Color.fromARGB(255, 138, 88, 247),
+                                  ),
+                                )),
+                            SizedBox(
+                              width: 10,
+                            ),
+                            Expanded(
+                                child: Text(
+                              'Select',
+                              style: TextStyle(
+                                  fontWeight: FontWeight.w400,
+                                  fontFamily: "Gilroy",
+                                  fontSize: 16),
+                            )),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
-                Expanded(
-                  child: Text('Select',
-                  style: TextStyle(
-                    fontWeight: FontWeight.w400,
-                    fontFamily: "Gilroy",
-                    fontSize: 16
-                  ),
-                  )
-                ),
-              ],
-            ),
-          ),
-        ),
-      ],
-    ),
                 // CustomDropdown(
                 //   image: Icon(
                 //    Icons.local_offer,
@@ -223,8 +240,6 @@ DateTime _selectedDate=DateTime.now();
                 //   listname: 'name1',
                 // ),
                 datepicker(),
-             
-               
               ],
             )),
           ),
@@ -358,7 +373,6 @@ DateTime _selectedDate=DateTime.now();
   //   );
   // }
 
-  
   Widget datepicker() {
     return Column(
       children: [
@@ -367,11 +381,8 @@ DateTime _selectedDate=DateTime.now();
         ),
         InkWell(
           onTap: () {
-            
-setState(() {
-  
-});
-           // _restorableDatePickerRouteFuture.present();
+            setState(() {});
+            // _restorableDatePickerRouteFuture.present();
           },
           child: Container(
             margin: EdgeInsets.only(left: 10, top: 10, right: 8.sp),
@@ -393,13 +404,13 @@ setState(() {
               children: [
                 Container(
                     height: double.infinity,
-                     width: 50,
+                    width: 50,
                     // width: 70,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.only(
                           topLeft: Radius.circular(9),
                           bottomLeft: Radius.circular(9)),
-                     color: Colors.grey[400],
+                      color: Colors.grey[400],
                       boxShadow: [
                         BoxShadow(
                           color: Colors.black12,
@@ -416,33 +427,33 @@ setState(() {
                 SizedBox(
                   width: 10,
                 ),
-                   Expanded(
-                     child: DateTimePicker(
-                     type: DateTimePickerType.date,
-                     dateMask: 'd MMM, yyyy',
-                     initialValue: DateTime.now().toString(),
-                     firstDate: DateTime(2000),
-                     lastDate: DateTime(2100),
-                     decoration: InputDecoration(border: InputBorder.none),
-                     // icon: Icon(Icons.event),
-                     dateLabelText: 'Date',
-                     timeLabelText: "Hour",
-                     selectableDayPredicate: (date) {
-                       // Disable weekend days to select from the calendar
-                       if (date.weekday == 6 || date.weekday == 7) {
-                         return false;
-                       }
-                   
-                       return true;
-                     },
-                     onChanged: (val) => print(val),
-                     validator: (val) {
-                       print(val);
-                       return null;
-                     },
-                     onSaved: (val) => print(val),
-                   ),
-                   ),
+                Expanded(
+                  child: DateTimePicker(
+                    type: DateTimePickerType.date,
+                    dateMask: 'd MMM, yyyy',
+                    initialValue: DateTime.now().toString(),
+                    firstDate: DateTime(2000),
+                    lastDate: DateTime(2100),
+                    decoration: InputDecoration(border: InputBorder.none),
+                    // icon: Icon(Icons.event),
+                    dateLabelText: 'Date',
+                    timeLabelText: "Hour",
+                    selectableDayPredicate: (date) {
+                      // Disable weekend days to select from the calendar
+                      if (date.weekday == 6 || date.weekday == 7) {
+                        return false;
+                      }
+
+                      return true;
+                    },
+                    onChanged: (val) => print(val),
+                    validator: (val) {
+                      print(val);
+                      return null;
+                    },
+                    onSaved: (val) => print(val),
+                  ),
+                ),
                 // Text(
                 //     ' ${_selectedDate.day}/${_selectedDate.month}/${_selectedDate.year}'),
               ],
@@ -452,7 +463,8 @@ setState(() {
       ],
     );
   }
-MainBottomsheet(
+
+  MainBottomsheet(
     BuildContext context,
   ) {
     //  final typestate = ref.watch(getprofileproduct);
@@ -547,18 +559,19 @@ MainBottomsheet(
                         Divider(
                           thickness: 1,
                         ),
-                         GestureDetector(
+                        GestureDetector(
                           onTap: () {
-                             Navigator.pop(context);
-                             Navigator.push(context, MaterialPageRoute(builder: ((context) => Report())));
-
-                            
+                            Navigator.pop(context);
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: ((context) => Report())));
                           },
                           child: Container(
                             margin: EdgeInsets.symmetric(vertical: 11.sp),
                             child: Text('Report',
                                 style: TextStyle(
-                                  letterSpacing: 1,
+                                    letterSpacing: 1,
                                     fontFamily: 'Gilroy',
                                     fontSize: 14.sp,
                                     fontWeight: FontWeight.w600,
@@ -568,10 +581,13 @@ MainBottomsheet(
                         Divider(
                           thickness: 1,
                         ),
-                         GestureDetector(
+                        GestureDetector(
                           onTap: () {
                             Navigator.pop(context);
-                             Navigator.push(context, MaterialPageRoute(builder: ((context) => Display())));
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: ((context) => Display())));
 
                             // Navigator.pop(context);
                           },
@@ -589,8 +605,7 @@ MainBottomsheet(
                         Divider(
                           thickness: 1,
                         ),
-                        
-                         GestureDetector(
+                        GestureDetector(
                           onTap: () {
                             Navigator.pop(context);
 
@@ -607,9 +622,10 @@ MainBottomsheet(
                                     color: Color(0xff1A1A1A))),
                           ),
                         ),
-                     SizedBox(height: 10,)
+                        SizedBox(
+                          height: 10,
+                        )
                       ])
                     ]))));
   }
 }
-

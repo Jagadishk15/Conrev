@@ -1,7 +1,5 @@
-// ignore_for_file: must_be_immutable
-
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:sizer/sizer.dart';
 
@@ -9,7 +7,7 @@ class CustomDropdown extends ConsumerStatefulWidget {
   final Widget image;
   final List listed;
 
-  late String? listname;
+  final String? listname;
   CustomDropdown({
     Key? key,
     required this.image,
@@ -22,6 +20,14 @@ class CustomDropdown extends ConsumerStatefulWidget {
 }
 
 class _CustomDropdownState extends ConsumerState<CustomDropdown> {
+  String _listName = "";
+
+  @override
+  void initState() {
+    _listName = widget.listname ?? "";
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -51,7 +57,7 @@ class _CustomDropdownState extends ConsumerState<CustomDropdown> {
               children: [
                 Container(
                     height: double.infinity,
-                     width: 50,
+                    width: 50,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.only(
                           topLeft: Radius.circular(9),
@@ -67,9 +73,8 @@ class _CustomDropdownState extends ConsumerState<CustomDropdown> {
                       ],
                     ),
                     child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: widget.image
-                    )),
+                        padding: const EdgeInsets.all(8.0),
+                        child: widget.image)),
                 SizedBox(
                   width: 1,
                 ),
@@ -87,7 +92,7 @@ class _CustomDropdownState extends ConsumerState<CustomDropdown> {
                         //   mainAxisAlignment: MainAxisAlignment.start,
                         //  crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text("${widget.listname}"),
+                          Text("${_listName}"),
 
                           //  Padding(
                           //       padding: const EdgeInsets.only(right:18.0),
@@ -107,7 +112,7 @@ class _CustomDropdownState extends ConsumerState<CustomDropdown> {
                       }).toList(),
                       onChanged: (String? value) {
                         setState(() {
-                          widget.listname = value!;
+                          _listName = value!;
                         });
                       }),
                 ),
