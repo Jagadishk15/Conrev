@@ -36,6 +36,11 @@ class LoginHelper extends ChangeNotifier {
       Utils().toast(msg: response['message']);
 
       if (response['message'] == "Invalid login") {
+         Navigator.pushAndRemoveUntil(
+          context,
+          MaterialPageRoute(builder: (_) => MainScreen()),
+          (route) => false,
+        );
       } else {
         await Cache().setLogin(true);
         Navigator.pushAndRemoveUntil(

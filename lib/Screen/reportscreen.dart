@@ -7,6 +7,7 @@ import 'package:sizer/sizer.dart';
 
 import '../custom/CustomDropdown.dart';
 import '../custom/custom.dart';
+import '../helper/report_helper.dart';
 
 class Report extends ConsumerStatefulWidget {
   const Report({Key? key}) : super(key: key);
@@ -201,10 +202,11 @@ List list=['l','m','s'];
                 height: 20,
               ),
                 next('Get Report',(){
-                   Navigator.push(context,
-                              MaterialPageRoute(builder: ((context) {
-                            return ReportListed();
-                          })));
+                   ref.read(reportHelper).getreport(context);
+                  //  Navigator.push(context,
+                  //             MaterialPageRoute(builder: ((context) {
+                  //           return ReportListed();
+                  //         })));
               print('object');
             },
              Customcolor().theam,

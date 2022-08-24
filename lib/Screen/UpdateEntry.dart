@@ -53,7 +53,7 @@ class _UpdateEntryState extends ConsumerState<UpdateEntry> {
             SizedBox(
               height: 10,
             ),
-            textField(_textcontroller1, "Head", '' ),
+            textField(_textcontroller1, "Head", ''  ),
             textField(_textcontroller2, "Sub Head", ''),
             textField(_textcontroller3, "Entry", ''),
             textField(_textcontroller3, "Keyword", ''),
