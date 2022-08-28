@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:sizer/sizer.dart';
 
 import '../custom/custom.dart';
+import '../helper/Entry_helper.dart';
 import 'entryScreen2.dart';
 
 class EntryScreen extends ConsumerStatefulWidget {
@@ -17,6 +18,7 @@ class _EntryScreenState extends ConsumerState<EntryScreen> {
   TextEditingController _textcontroller2 = TextEditingController();
   @override
   Widget build(BuildContext context) {
+    final helper = ref.read(entryHelper);
     return Column(
       children: [
         SizedBox(
@@ -43,18 +45,20 @@ class _EntryScreenState extends ConsumerState<EntryScreen> {
         SizedBox(
           height: 10,
         ),
-        textField(_textcontroller1, "Head", ''),
-        textField(_textcontroller2, "Sub", ''),
+        textField(helper.head, "Head", ''),
+        textField(helper.sub, "Sub", ''),
+         textField(helper.name, "Enter name", ''),
         description(),
         SizedBox(
           height: 20,
         ),
         InkWell(
           onTap: () {
-            Navigator.push(context,
-                              MaterialPageRoute(builder: ((context) {
-                            return EntryNextScreen(restorationId: 'main');
-                          })));
+            helper.validation(context);
+            // Navigator.push(context,
+            //                   MaterialPageRoute(builder: ((context) {
+            //                 return EntryNextScreen(restorationId: 'main');
+            //               })));
             //  info.productname=_textcontroller1.text;
             //  info.description=_textcontroller2.text;
             
@@ -86,6 +90,7 @@ class _EntryScreenState extends ConsumerState<EntryScreen> {
   }
 
   Widget description() {
+     final helper = ref.read(entryHelper);
     return Container(
       margin: EdgeInsets.only(left: 10, top: 20, right: 8.sp),
       height: 35.h,
@@ -104,7 +109,7 @@ class _EntryScreenState extends ConsumerState<EntryScreen> {
       child: TextField(
           keyboardType: TextInputType.multiline,
           maxLines: 10,
-          controller: _textcontroller2,
+          controller: helper.Description,
           decoration: InputDecoration(
             border: InputBorder.none,
             hintText: ' Description',

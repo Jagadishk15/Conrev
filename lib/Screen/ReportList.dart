@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:sizer/sizer.dart';
 
 import '../custom/custom.dart';
+import '../helper/report_helper.dart';
 import 'UpdateEntry.dart';
 
 class ReportListed extends ConsumerStatefulWidget {
@@ -15,6 +16,7 @@ class ReportListed extends ConsumerStatefulWidget {
 class _ReportListedState extends ConsumerState<ReportListed> {
   @override
   Widget build(BuildContext context) {
+    final helper = ref.read(reportHelper);
     return Scaffold(
         appBar: AppBar(
           title: Text('Report'),
@@ -27,16 +29,16 @@ class _ReportListedState extends ConsumerState<ReportListed> {
           automaticallyImplyLeading: false,
           backgroundColor: Customcolor().blacktheme,
           actions: [
-            IconButton(
-              icon: Icon(
-                Icons.more_vert_outlined,
-                size: 25,
-              ),
-              color: Colors.white,
-              onPressed: () {
-                //   MainBottomsheet(context);
-              },
-            ),
+            // IconButton(
+            //   icon: Icon(
+            //     Icons.more_vert_outlined,
+            //     size: 25,
+            //   ),
+            //   color: Colors.white,
+            //   onPressed: () {
+            //     //   MainBottomsheet(context);
+            //   },
+            // ),
           ],
         ),
         body: SingleChildScrollView(
@@ -47,7 +49,7 @@ class _ReportListedState extends ConsumerState<ReportListed> {
                 physics: BouncingScrollPhysics(),
                 scrollDirection: Axis.vertical,
                 shrinkWrap: true,
-                itemCount: 19,
+                itemCount: helper.reportlist.length,
                 itemBuilder: (BuildContext context, int index) {
                   return Container(
                     margin: EdgeInsets.only(left: 10, top: 10, right: 8.sp),
@@ -135,7 +137,8 @@ class _ReportListedState extends ConsumerState<ReportListed> {
                                   ];
                                 }, onSelected: (value) {
                                   if (value == 0) {
-                                     Navigator.push(context, MaterialPageRoute(builder: ((context) {
+                                    Navigator.push(context,
+                                        MaterialPageRoute(builder: ((context) {
                                       return UpdateEntry();
                                     })));
                                     print("My account menu is selected.");
@@ -165,6 +168,9 @@ class _ReportListedState extends ConsumerState<ReportListed> {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Row(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
                                     children: [
                                       Text(
                                         'Head',
@@ -176,6 +182,22 @@ class _ReportListedState extends ConsumerState<ReportListed> {
                                           // color: Color.fromARGB(255, 138, 88, 247)
                                           //color: Color.fromARGB(255, 255, 0, 98)
                                           //color: Color(0xffffffff)
+                                        ),
+                                      ),
+                                      SizedBox(
+                                        width: 55,
+                                      ),
+                                      Container(
+                                        width: 50.w,
+                                        child: Text(
+                                          helper.reportlist[index]
+                                                ['head_name'],
+                                          style: TextStyle(
+                                              // letterSpacing: .5,
+                                              fontWeight: FontWeight.w500,
+                                              fontFamily: "Gilroy",
+                                              fontSize: 12.sp,
+                                              color: Colors.grey[700]),
                                         ),
                                       ),
                                     ],
@@ -197,26 +219,62 @@ class _ReportListedState extends ConsumerState<ReportListed> {
                                           //color: Color(0xffffffff)
                                         ),
                                       ),
+                                      SizedBox(
+                                        width: 20,
+                                      ),
+                                      Container(
+                                        width: 50.w,
+                                        child: Text(
+                                          helper.reportlist[index]
+                                                ['subhead_name'],
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.w500,
+                                              fontFamily: "Gilroy",
+                                              fontSize: 12.sp,
+                                              color: Colors.grey[700]),
+                                        ),
+                                      ),
                                     ],
                                   ),
                                   SizedBox(
                                     height: 10,
                                   ),
-                                  Row(
-                                    children: [
-                                      Text(
-                                        'Description',
-                                        style: TextStyle(
-                                          letterSpacing: .5,
-                                          fontWeight: FontWeight.w600,
-                                          fontFamily: "Gilroy",
-                                          fontSize: 13.sp,
-                                          // color: Color.fromARGB(255, 138, 88, 247)
-                                          //color: Color.fromARGB(255, 255, 0, 98)
-                                          //color: Color(0xffffffff)
+                                  Container(
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.start,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          'Description',
+                                          style: TextStyle(
+                                            letterSpacing: .5,
+                                            fontWeight: FontWeight.w600,
+                                            fontFamily: "Gilroy",
+                                            fontSize: 13.sp,
+                                            // color: Color.fromARGB(255, 138, 88, 247)
+                                            //color: Color.fromARGB(255, 255, 0, 98)
+                                            //color: Color(0xffffffff)
+                                          ),
                                         ),
-                                      ),
-                                    ],
+                                        SizedBox(
+                                          width: 10,
+                                        ),
+                                        Container(
+                                          width: 50.w,
+                                          child: Text(
+                                            helper.reportlist[index]
+                                                ['description'],
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.w500,
+                                                fontFamily: "Gilroy",
+                                                fontSize: 12.sp,
+                                                color: Colors.grey[700]),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
                                   ),
                                   SizedBox(
                                     height: 10,
@@ -235,12 +293,30 @@ class _ReportListedState extends ConsumerState<ReportListed> {
                                           //color: Color(0xffffffff)
                                         ),
                                       ),
+                                      SizedBox(
+                                        width: 20,
+                                      ),
+                                      Container(
+                                        width: 50.w,
+                                        child: Text(
+                                          helper.reportlist[index]
+                                                ['file'],
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.w500,
+                                              fontFamily: "Gilroy",
+                                              fontSize: 12.sp,
+                                              color: Colors.grey[700]),
+                                        ),
+                                      ),
                                     ],
                                   ),
                                   SizedBox(
                                     height: 10,
                                   ),
                                   Row(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
                                     children: [
                                       Text(
                                         'Date',
@@ -254,103 +330,25 @@ class _ReportListedState extends ConsumerState<ReportListed> {
                                           //color: Color(0xffffffff)
                                         ),
                                       ),
+                                      SizedBox(
+                                        width: 20,
+                                      ),
+                                      Container(
+                                        width: 50.w,
+                                        child: Text(
+                                           helper.reportlist[index]
+                                                ['reminder_date'],
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.w500,
+                                              fontFamily: "Gilroy",
+                                              fontSize: 12.sp,
+                                              color: Colors.grey[700]),
+                                        ),
+                                      ),
                                     ],
                                   ),
                                 ],
                               ),
-                              Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Row(
-                                    children: [
-                                      SizedBox(
-                                        width: 20,
-                                      ),
-                                      Text(
-                                        'Jagadish',
-                                        style: TextStyle(
-                                            // letterSpacing: .5,
-                                            fontWeight: FontWeight.w500,
-                                            fontFamily: "Gilroy",
-                                            fontSize: 12.sp,
-                                            color: Colors.grey[700]),
-                                      ),
-                                    ],
-                                  ),
-                                  SizedBox(
-                                    height: 10,
-                                  ),
-                                  Row(
-                                    children: [
-                                      SizedBox(
-                                        width: 20,
-                                      ),
-                                      Text(
-                                        'Jagadish1234',
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.w500,
-                                            fontFamily: "Gilroy",
-                                            fontSize: 12.sp,
-                                            color: Colors.grey[700]),
-                                      ),
-                                    ],
-                                  ),
-                                  SizedBox(
-                                    height: 10,
-                                  ),
-                                  Row(
-                                    children: [
-                                      SizedBox(
-                                        width: 20,
-                                      ),
-                                      Text(
-                                        '1234',
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.w500,
-                                            fontFamily: "Gilroy",
-                                            fontSize: 12.sp,
-                                            color: Colors.grey[700]),
-                                      ),
-                                    ],
-                                  ),
-                                  SizedBox(
-                                    height: 10,
-                                  ),
-                                  Row(
-                                    children: [
-                                      SizedBox(
-                                        width: 20,
-                                      ),
-                                      Text(
-                                        '',
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.w500,
-                                            fontFamily: "Gilroy",
-                                            fontSize: 12.sp,
-                                            color: Colors.grey[700]),
-                                      ),
-                                    ],
-                                  ),
-                                    SizedBox(
-                                    height: 10,
-                                  ),
-                                  Row(
-                                    children: [
-                                      SizedBox(
-                                        width: 20,
-                                      ),
-                                      Text(
-                                        '15-04-2021',
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.w500,
-                                            fontFamily: "Gilroy",
-                                            fontSize: 12.sp,
-                                            color: Colors.grey[700]),
-                                      ),
-                                    ],
-                                  )
-                                ],
-                              )
                             ],
                           ),
                           SizedBox(
@@ -392,7 +390,9 @@ class _ReportListedState extends ConsumerState<ReportListed> {
                                         height: 6,
                                       ),
                                       Text(
-                                        'M',
+                                        helper.reportlist[index]
+                                                ['frequency']==null?'null': helper.reportlist[index]
+                                                ['frequency'],
                                         style: TextStyle(
                                             fontWeight: FontWeight.w500,
                                             fontFamily: "Gilroy",
@@ -412,7 +412,8 @@ class _ReportListedState extends ConsumerState<ReportListed> {
                                               255, 138, 88, 247)),
                                       //  SizedBox(height: 6,),
                                       Text(
-                                        'P',
+                                      helper.reportlist[index]
+                                                ['strip'],
                                         style: TextStyle(
                                             fontWeight: FontWeight.w500,
                                             fontFamily: "Gilroy",
@@ -433,7 +434,9 @@ class _ReportListedState extends ConsumerState<ReportListed> {
                                       height: 6,
                                     ),
                                     Text(
-                                      'null',
+                                      helper.reportlist[index]
+                                                ['k_name']==null?'null': helper.reportlist[index]
+                                                ['k_name'],
                                       style: TextStyle(
                                           fontWeight: FontWeight.w500,
                                           fontFamily: "Gilroy",
@@ -453,7 +456,9 @@ class _ReportListedState extends ConsumerState<ReportListed> {
                                       height: 6,
                                     ),
                                     Text(
-                                      'null',
+                                        helper.reportlist[index]
+                                                ['frequency']==null?'null': helper.reportlist[index]
+                                                ['frequency'],
                                       style: TextStyle(
                                           fontWeight: FontWeight.w500,
                                           fontFamily: "Gilroy",

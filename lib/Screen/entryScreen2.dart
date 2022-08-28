@@ -21,25 +21,31 @@ class EntryNextScreen extends ConsumerStatefulWidget {
 
 class _EntryNextScreenState extends ConsumerState<EntryNextScreen> {
   List list = [
-    'P',
-    "M",
-    "N",
+    'L',
+    "F",
+    "S",
+    "P",
+    "T",
+    "C"
   ];
   List list1 = [
-    'P',
-    "M",
-    "N",
+    'N',
+    "D",
+    "A",
+    'T',
+    "W",
+    "F",
+    'M',
+    "Q",
+    "H",
+    "Y"
   ];
   List list2 = [
-    'P',
+    'H',
     "M",
-    "N",
+    "L",
   ];
-  List list3 = [
-    'P',
-    "M",
-    "N",
-  ];
+  
   String? name1;
   // String? name2 = 'P1';
   // String? name3 = 'P';
@@ -220,7 +226,7 @@ class _EntryNextScreenState extends ConsumerState<EntryNextScreen> {
                     Icons.notifications,
                     color: Color.fromARGB(255, 138, 88, 247),
                   ),
-                  listed: list,
+                  listed: list1,
                   listname: 'N',
                 ),
                 CustomDropdown(
@@ -228,8 +234,8 @@ class _EntryNextScreenState extends ConsumerState<EntryNextScreen> {
                     Icons.traffic,
                     color: Color.fromARGB(255, 138, 88, 247),
                   ),
-                  listed: list,
-                  listname: 'M',
+                  listed: list2,
+                  listname: 'Select Priority',
                 ),
                 // CustomDropdown(
                 //   image: Icon(

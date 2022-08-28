@@ -17,7 +17,31 @@ class _UpdateEntryState extends ConsumerState<UpdateEntry> {
   TextEditingController _textcontroller1 = TextEditingController();
   TextEditingController _textcontroller2 = TextEditingController();
   TextEditingController _textcontroller3 = TextEditingController();
-  List list = ['L', 'M', "H"];
+   List list = [
+    'L',
+    "F",
+    "S",
+    "P",
+    "T",
+    "C"
+  ];
+  List list1 = [
+    'N',
+    "D",
+    "A",
+    'T',
+    "W",
+    "F",
+    'M',
+    "Q",
+    "H",
+    "Y"
+  ];
+  List list2 = [
+    'H',
+    "M",
+    "L",
+  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -58,6 +82,96 @@ class _UpdateEntryState extends ConsumerState<UpdateEntry> {
             textField(_textcontroller3, "Entry", ''),
             textField(_textcontroller3, "Keyword", ''),
             textField(_textcontroller3, "Sub Keyword", ''),
+             Column(
+                  children: [
+                    SizedBox(
+                      height: 10,
+                    ),
+                    InkWell(
+                      onTap: () {},
+                      child: Container(
+                        margin: EdgeInsets.only(left: 10, top: 10, right: 8.sp),
+                        // width: 51.w,
+                        height: 15.w,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(9),
+                          color: Colors.white,
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.black12,
+                              spreadRadius: 1,
+                              blurRadius: 5,
+                              offset:
+                                  Offset(2, 2), // changes position of shadow
+                            ),
+                          ],
+                        ),
+                        child: Row(
+                          children: [
+                            Container(
+                                height: double.infinity,
+                                width: 50,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.only(
+                                      topLeft: Radius.circular(9),
+                                      bottomLeft: Radius.circular(9)),
+                                  color: Colors.grey[400],
+                                  boxShadow: [
+                                    BoxShadow(
+                                      color: Colors.black12,
+                                      spreadRadius: 1,
+                                      blurRadius: 5,
+                                      offset: Offset(
+                                          2, 2), // changes position of shadow
+                                    ),
+                                  ],
+                                ),
+                                child: Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Icon(
+                                    Icons.discount,
+                                    color: Color.fromARGB(255, 138, 88, 247),
+                                  ),
+                                )),
+                            SizedBox(
+                              width: 10,
+                            ),
+                            Expanded(
+                                child: Text(
+                              'Select',
+                              style: TextStyle(
+                                  fontWeight: FontWeight.w400,
+                                  fontFamily: "Gilroy",
+                                  fontSize: 16),
+                            )),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                // CustomDropdown(
+                //   image: Icon(
+                //    Icons.local_offer,
+                //     color: Color.fromARGB(255, 138, 88, 247),
+                //   ),
+                //   listed: list,
+                //   listname: 'N',
+                // ),
+                CustomDropdown(
+                  image: Image.asset('Assets/stripe.png',
+                      width: 40, color: Color.fromARGB(255, 138, 88, 247)),
+                  listed: list,
+                  listname: 'P',
+                ),
+                CustomDropdown(
+                  image: Icon(
+                    Icons.notifications,
+                    color: Color.fromARGB(255, 138, 88, 247),
+                  ),
+                  listed: list1,
+                  listname: 'N',
+                ),
             Column(
               children: [
                 SizedBox(

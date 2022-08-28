@@ -1,9 +1,11 @@
 import 'package:conrev/Screen/display.dart';
 import 'package:conrev/Screen/reportscreen.dart';
+import 'package:conrev/service/cache.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:sizer/sizer.dart';
 import '../custom/custom.dart';
+import 'Login.dart';
 import 'entryscreen.dart';
 
 class MainScreen extends ConsumerStatefulWidget {
@@ -167,6 +169,32 @@ class _MainScreenState extends ConsumerState<MainScreen> {
                     margin: EdgeInsets.symmetric(vertical: 11.sp),
                     child: Text(
                       'Display',
+                      style: TextStyle(
+                        letterSpacing: 1,
+                        fontFamily: 'Gilroy',
+                        fontSize: 14.sp,
+                        fontWeight: FontWeight.w600,
+                        color: Color(0xff1A1A1A),
+                      ),
+                    ),
+                  ),
+                ),
+                Divider(thickness: 1),
+                GestureDetector(
+                  onTap: () async {
+                    Navigator.pop(context);
+                    await Cache().setLogin(false);
+                    Navigator.pushAndRemoveUntil(
+                      context,
+                      MaterialPageRoute(builder: (_) => LoginScreen()),
+                      (route) => false,
+                    );
+                    // Navigator.pop(context);
+                  },
+                  child: Container(
+                    margin: EdgeInsets.symmetric(vertical: 11.sp),
+                    child: Text(
+                      'Logout',
                       style: TextStyle(
                         letterSpacing: 1,
                         fontFamily: 'Gilroy',

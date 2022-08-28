@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:sizer/sizer.dart';
 
 import '../custom/custom.dart';
+import '../helper/display_helper.dart';
 import 'UpdateEntry.dart';
 
 class Display extends ConsumerStatefulWidget {
@@ -14,6 +15,11 @@ class Display extends ConsumerStatefulWidget {
 }
 
 class _DisplayState extends ConsumerState<Display> {
+  @override
+  void initState() {
+      Future.microtask(() =>  ref.read(displaytHelper).getdisplay(context));
+    super.initState();
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(

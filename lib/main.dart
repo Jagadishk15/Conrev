@@ -16,6 +16,7 @@ class MyApp extends StatelessWidget {
   const MyApp({Key? key, this.isLogin}) : super(key: key);
 
   // This widget is the root of your application.
+  
   @override
   Widget build(BuildContext context) {
     return ProviderScope(
@@ -24,7 +25,7 @@ class MyApp extends StatelessWidget {
           return MaterialApp(
             title: 'Flutter Demo',
             debugShowCheckedModeBanner: false,
-            home: isLogin! ? MainScreen() : LoginScreen(),
+            home: isLogin==true ? MainScreen() : LoginScreen(),
           );
         },
       ),
