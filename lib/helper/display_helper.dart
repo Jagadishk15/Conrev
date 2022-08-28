@@ -31,8 +31,9 @@ class DisplayHelper extends ChangeNotifier {
       await Cache().setAccessToken(token);
 
       var response = await API().get(url);
-
+   
       Utils().dismissLoader(context);
+           
            
           //  for (var i = 0; i < response['data'].length; i++) {
           //      if ( response['data'][i]['strip']=="P") {

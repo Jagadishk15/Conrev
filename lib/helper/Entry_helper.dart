@@ -10,6 +10,8 @@ class EntryHelper extends ChangeNotifier {
   TextEditingController head = TextEditingController();
   TextEditingController sub = TextEditingController();
   TextEditingController name = TextEditingController();
+  TextEditingController Kw = TextEditingController();
+  TextEditingController Swk = TextEditingController();
    TextEditingController Description = TextEditingController();
    validation(context){
      if (head.text.isEmpty || sub.text.isEmpty|| Description.text.isEmpty|| name.text.isEmpty)

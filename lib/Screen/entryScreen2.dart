@@ -1,12 +1,18 @@
+import 'dart:io';
+import 'package:permission_handler/permission_handler.dart';
 import 'package:conrev/Screen/reportscreen.dart';
+import 'package:file_picker/file_picker.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:sizer/sizer.dart';
-
+import 'package:filesize/filesize.dart';
 import '../custom/CustomDropdown.dart';
 import '../custom/custom.dart';
 import 'package:date_time_picker/date_time_picker.dart';
 
+import '../helper/Entry_helper.dart';
 import 'display.dart';
 
 class EntryNextScreen extends ConsumerStatefulWidget {
@@ -20,32 +26,144 @@ class EntryNextScreen extends ConsumerStatefulWidget {
 }
 
 class _EntryNextScreenState extends ConsumerState<EntryNextScreen> {
-  List list = [
-    'L',
-    "F",
-    "S",
-    "P",
-    "T",
-    "C"
-  ];
-  List list1 = [
-    'N',
-    "D",
-    "A",
-    'T',
-    "W",
-    "F",
-    'M',
-    "Q",
-    "H",
-    "Y"
-  ];
+  File? _filedata;
+  chooseAndUploadImage(
+    context,
+  ) async {
+    var status = await Permission.storage.request();
+
+    if (status.isDenied) {
+      // We didn't ask for permission yet.
+      showDialog(
+          context: context,
+          builder: (BuildContext context) => CupertinoAlertDialog(
+                title: Text('Photo Permission'),
+                content: Text('This app needs photo to upload user document'),
+                actions: <Widget>[
+                  CupertinoDialogAction(
+                    child: Text('Deny'),
+                    onPressed: () => Navigator.of(context).pop(),
+                  ),
+                  CupertinoDialogAction(
+                    child: Text('Settings'),
+                    onPressed: () => openAppSettings(),
+                  ),
+                ],
+              ));
+    } else if (status.isRestricted) {
+      Fluttertoast.showToast(
+        msg: "Go to your application settings and give photo permission ",
+      );
+    } else if (status.isGranted) {
+      FilePickerResult filePickerResult;
+
+      filePickerResult = (await FilePicker.platform.pickFiles(
+        type: FileType.any,
+        allowMultiple: false,
+      ))!;
+
+      // ignore: unnecessary_null_comparison
+      if (filePickerResult == null) {
+      } else {
+        File _file = File("${filePickerResult.files.single.path}");
+
+        // dpprovider.profilebg=_file;
+
+        print(_file);
+
+        // showModalBottomSheet(
+        //   isScrollControlled: true,
+        //   backgroundColor: Colors.black.withOpacity(0.5),
+        //   context: context,
+        //   builder: (context) => Container(
+        //     margin: EdgeInsets.all(15),
+        //     child: Column(
+        //       mainAxisAlignment: MainAxisAlignment.center,
+        //       children: [
+        //         Container(
+        //           height: 250,
+        //           width: double.infinity,
+        //           decoration: BoxDecoration(
+        //             borderRadius: BorderRadius.circular(10),
+        //             color: Colors.white,
+        //           ),
+        //           padding: EdgeInsets.all(10),
+        //           alignment: Alignment.center,
+        //           child: Image.file(
+        //             _file,
+        //             fit: BoxFit.fill,
+        //           ),
+        //         ),
+        //         SizedBox(
+        //           height: 15,
+        //         ),
+        //         Row(
+        //           mainAxisAlignment: MainAxisAlignment.center,
+        //           children: [
+        //             MaterialButton(
+        //               onPressed: () {
+        //                 Navigator.pop(context);
+        //               },
+        //               color: Color(0xff591B4C),
+        //               child: Padding(
+        //                 padding: EdgeInsets.fromLTRB(30, 10, 30, 10),
+        //                 child: Text(
+        //                   "Cancel",
+        //                   style: TextStyle(
+        //                     fontSize: 18,
+        //                     color: Colors.white,
+        //                     fontWeight: FontWeight.w400,
+        //                     //  fontFamily: 'Gilroy',
+        //                   ),
+        //                 ),
+        //               ),
+        //             ),
+        //             SizedBox(
+        //               width: 15,
+        //             ),
+        //             MaterialButton(
+        //               onPressed: () {
+        //                 //  uploadImageToDB(_file,ref.watch(profilebgprov));
+        //                 _filedata = _file;
+        //                 // ref.watch(productupload).tumbnail = _file;
+        //                 setState(() {});
+        //                 print(_file);
+        //                 final fs2 = filesize(_filedata!.lengthSync());
+        //                 print(fs2);
+        //                 Navigator.pop(context);
+        //               },
+        //               color: Color(0xff591B4C),
+        //               child: Padding(
+        //                 padding: EdgeInsets.fromLTRB(30, 10, 30, 10),
+        //                 child: Text(
+        //                   "Confirm",
+        //                   style: TextStyle(
+        //                     fontSize: 18,
+        //                     color: Colors.white,
+        //                     fontWeight: FontWeight.w400,
+        //                     //  fontFamily: 'Gilroy',
+        //                   ),
+        //                 ),
+        //               ),
+        //             ),
+        //           ],
+        //         ),
+        //       ],
+        //     ),
+        //   ),
+        // );
+      }
+    }
+  }
+
+  List list = ['L', "F", "S", "P", "T", "C"];
+  List list1 = ['N', "D", "A", 'T', "W", "F", 'M', "Q", "H", "Y"];
   List list2 = [
     'H',
     "M",
     "L",
   ];
-  
+
   String? name1;
   // String? name2 = 'P1';
   // String? name3 = 'P';
@@ -109,6 +227,7 @@ class _EntryNextScreenState extends ConsumerState<EntryNextScreen> {
 
   @override
   Widget build(BuildContext context) {
+     final helper = ref.read(entryHelper);
     return Scaffold(
       appBar: AppBar(
         title: Text('Conrev'),
@@ -137,15 +256,22 @@ class _EntryNextScreenState extends ConsumerState<EntryNextScreen> {
         children: [
           Expanded(
             child: SingleChildScrollView(
+              physics: BouncingScrollPhysics(),
                 child: Column(
               children: [
                 Column(
                   children: [
+                     textField(helper.Kw, "Enter new Kw", ''),
+                      textField(helper.Swk, "Enter New SWK", ''),
                     SizedBox(
                       height: 10,
                     ),
                     InkWell(
-                      onTap: () {},
+                      onTap: () {
+                        chooseAndUploadImage(
+                          context,
+                        );
+                      },
                       child: Container(
                         margin: EdgeInsets.only(left: 10, top: 10, right: 8.sp),
                         // width: 51.w,
@@ -185,17 +311,18 @@ class _EntryNextScreenState extends ConsumerState<EntryNextScreen> {
                                 ),
                                 child: Padding(
                                   padding: const EdgeInsets.all(8.0),
-                                  child: Icon(
-                                    Icons.discount,
-                                    color: Color.fromARGB(255, 138, 88, 247),
-                                  ),
+                                  child:Icon( Icons.file_upload_outlined,   color: Color.fromARGB(255, 138, 88, 247), ),
+                                  //  Icon(
+                                  //   Icons.discount,
+                                  //   color: Color.fromARGB(255, 138, 88, 247),
+                                  // ),
                                 )),
                             SizedBox(
                               width: 10,
                             ),
                             Expanded(
                                 child: Text(
-                              'Select',
+                              'File Upload',
                               style: TextStyle(
                                   fontWeight: FontWeight.w400,
                                   fontFamily: "Gilroy",
@@ -246,10 +373,7 @@ class _EntryNextScreenState extends ConsumerState<EntryNextScreen> {
                 //   listname: 'name1',
                 // ),
                 datepicker(),
-              ],
-            )),
-          ),
-          InkWell(
+                  InkWell(
             onTap: () {
               // Navigator.push(context, MaterialPageRoute(builder: ((context) {
               //   return EntryNextScreen();
@@ -275,11 +399,53 @@ class _EntryNextScreenState extends ConsumerState<EntryNextScreen> {
               )),
             ),
           ),
+          SizedBox(height:5.h,)
+              ],
+            )),
+          ),
+        
         ],
       ),
     );
   }
-
+ Widget textField(
+      TextEditingController controller, String placeholder, String field) {
+    return Column(
+      children: [
+       
+        Container(
+            margin: EdgeInsets.only(left: 10, top: 10, right: 8.sp),
+            // width: 51.w,
+            height: 15.w,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(9),
+              color: Colors.white,
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.black12,
+                  spreadRadius: 1,
+                  blurRadius: 5,
+                  offset: Offset(2, 2), // changes position of shadow
+                ),
+              ],
+            ),
+            child: TextField(
+              
+                keyboardType: TextInputType.text,
+                controller: controller,
+                decoration: InputDecoration(
+                  border: InputBorder.none,
+                  hintText: placeholder,
+                  hintStyle: TextStyle(
+                      color: Color(0xffABB4BD),
+                      fontFamily: 'Gilroy',
+                      fontSize: 16,
+                      fontWeight: FontWeight.w700),
+                  contentPadding: EdgeInsets.only(left: 10, top: 18),
+                ))),
+      ],
+    );
+  }
   // Widget droupdownfield(String image, List listed, String? listname) {
   //   return Column(
   //     children: [
