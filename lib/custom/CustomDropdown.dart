@@ -6,10 +6,11 @@ import 'package:sizer/sizer.dart';
 class CustomDropdown extends ConsumerStatefulWidget {
   final Widget image;
   final List listed;
-
+  final Widget dropdown;
   final String? listname;
   CustomDropdown({
     Key? key,
+    required this.dropdown,
     required this.image,
     required this.listed,
     this.listname,
@@ -79,42 +80,7 @@ class _CustomDropdownState extends ConsumerState<CustomDropdown> {
                   width: 1,
                 ),
                 Expanded(
-                  child: DropdownButton(
-                      isExpanded: false,
-                      menuMaxHeight: 300,
-                      //alignment: AlignmentGeometry.,
-                      // hint: Padding(
-                      //   padding: const EdgeInsets.only(left:18.0),
-                      //   child:  Text("$_currentSugars"),
-                      // ),
-                      // alignment : AlignmentDirectional.bottomStart,
-                      icon: Row(
-                        //   mainAxisAlignment: MainAxisAlignment.start,
-                        //  crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text("${_listName}"),
-
-                          //  Padding(
-                          //       padding: const EdgeInsets.only(right:18.0),
-                          //    child: Icon(Icons.keyboard_arrow_down_sharp, color: Customcolor().blacktheme, size: 28),
-                          //  ),
-                        ],
-                      ),
-                      iconSize: 28,
-                      elevation: 4,
-                      underline: Container(),
-                      items: widget.listed.map<DropdownMenuItem<String>>((e) {
-                        return DropdownMenuItem<String>(
-                            // enabled: true,
-                            // alignment : AlignmentDirectional.bottomStart,
-                            value: e,
-                            child: Text(e.toString()));
-                      }).toList(),
-                      onChanged: (String? value) {
-                        setState(() {
-                          _listName = value!;
-                        });
-                      }),
+                  child: widget.dropdown
                 ),
               ],
             ),

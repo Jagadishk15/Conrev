@@ -17,6 +17,9 @@ class Report extends ConsumerStatefulWidget {
 }
 
 class _ReportState extends ConsumerState<Report> {
+   String _listName = "";
+  String _listName1 = "";
+   String _listName2 = "";
 List list=['l','m','s'];
   @override
   Widget build(BuildContext context) {
@@ -73,6 +76,42 @@ List list=['l','m','s'];
             ),
             
                 CustomDropdown(
+                  dropdown:  DropdownButton(
+                      isExpanded: false,
+                      menuMaxHeight: 300,
+                      //alignment: AlignmentGeometry.,
+                      // hint: Padding(
+                      //   padding: const EdgeInsets.only(left:18.0),
+                      //   child:  Text("$_currentSugars"),
+                      // ),
+                      // alignment : AlignmentDirectional.bottomStart,
+                      icon: Row(
+                        //   mainAxisAlignment: MainAxisAlignment.start,
+                        //  crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text("${_listName}"),
+
+                          //  Padding(
+                          //       padding: const EdgeInsets.only(right:18.0),
+                          //    child: Icon(Icons.keyboard_arrow_down_sharp, color: Customcolor().blacktheme, size: 28),
+                          //  ),
+                        ],
+                      ),
+                      iconSize: 28,
+                      elevation: 4,
+                      underline: Container(),
+                      items:list.map<DropdownMenuItem<String>>((e) {
+                        return DropdownMenuItem<String>(
+                            // enabled: true,
+                            // alignment : AlignmentDirectional.bottomStart,
+                            value: e,
+                            child: Text(e.toString()));
+                      }).toList(),
+                      onChanged: (String? value) {
+                        setState(() {
+                          _listName = value!;
+                        });
+                      }),
                     image: Icon(
                       Icons.filter_alt,
                       color: Color.fromARGB(255, 138, 88, 247),
@@ -103,6 +142,42 @@ List list=['l','m','s'];
               ],
             ),
              CustomDropdown(
+               dropdown:  DropdownButton(
+                      isExpanded: false,
+                      menuMaxHeight: 300,
+                      //alignment: AlignmentGeometry.,
+                      // hint: Padding(
+                      //   padding: const EdgeInsets.only(left:18.0),
+                      //   child:  Text("$_currentSugars"),
+                      // ),
+                      // alignment : AlignmentDirectional.bottomStart,
+                      icon: Row(
+                        //   mainAxisAlignment: MainAxisAlignment.start,
+                        //  crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text("${_listName}"),
+
+                          //  Padding(
+                          //       padding: const EdgeInsets.only(right:18.0),
+                          //    child: Icon(Icons.keyboard_arrow_down_sharp, color: Customcolor().blacktheme, size: 28),
+                          //  ),
+                        ],
+                      ),
+                      iconSize: 28,
+                      elevation: 4,
+                      underline: Container(),
+                      items:list.map<DropdownMenuItem<String>>((e) {
+                        return DropdownMenuItem<String>(
+                            // enabled: true,
+                            // alignment : AlignmentDirectional.bottomStart,
+                            value: e,
+                            child: Text(e.toString()));
+                      }).toList(),
+                      onChanged: (String? value) {
+                        setState(() {
+                          _listName = value!;
+                        });
+                      }),
                     image: Icon(
                       Icons.notifications,
                       color: Color.fromARGB(255, 138, 88, 247),
@@ -111,6 +186,42 @@ List list=['l','m','s'];
                     listname: 'Select',
                   ),
                    CustomDropdown(
+                    dropdown:  DropdownButton(
+                      isExpanded: false,
+                      menuMaxHeight: 300,
+                      //alignment: AlignmentGeometry.,
+                      // hint: Padding(
+                      //   padding: const EdgeInsets.only(left:18.0),
+                      //   child:  Text("$_currentSugars"),
+                      // ),
+                      // alignment : AlignmentDirectional.bottomStart,
+                      icon: Row(
+                        //   mainAxisAlignment: MainAxisAlignment.start,
+                        //  crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text("${_listName}"),
+
+                          //  Padding(
+                          //       padding: const EdgeInsets.only(right:18.0),
+                          //    child: Icon(Icons.keyboard_arrow_down_sharp, color: Customcolor().blacktheme, size: 28),
+                          //  ),
+                        ],
+                      ),
+                      iconSize: 28,
+                      elevation: 4,
+                      underline: Container(),
+                      items:list.map<DropdownMenuItem<String>>((e) {
+                        return DropdownMenuItem<String>(
+                            // enabled: true,
+                            // alignment : AlignmentDirectional.bottomStart,
+                            value: e,
+                            child: Text(e.toString()));
+                      }).toList(),
+                      onChanged: (String? value) {
+                        setState(() {
+                          _listName = value!;
+                        });
+                      }),
                     image:    Column(mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
@@ -131,6 +242,42 @@ List list=['l','m','s'];
                     listname: 'Select',
                   ),
                    CustomDropdown(
+                    dropdown:  DropdownButton(
+                      isExpanded: false,
+                      menuMaxHeight: 300,
+                      //alignment: AlignmentGeometry.,
+                      // hint: Padding(
+                      //   padding: const EdgeInsets.only(left:18.0),
+                      //   child:  Text("$_currentSugars"),
+                      // ),
+                      // alignment : AlignmentDirectional.bottomStart,
+                      icon: Row(
+                        //   mainAxisAlignment: MainAxisAlignment.start,
+                        //  crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text("${_listName}"),
+
+                          //  Padding(
+                          //       padding: const EdgeInsets.only(right:18.0),
+                          //    child: Icon(Icons.keyboard_arrow_down_sharp, color: Customcolor().blacktheme, size: 28),
+                          //  ),
+                        ],
+                      ),
+                      iconSize: 28,
+                      elevation: 4,
+                      underline: Container(),
+                      items:list.map<DropdownMenuItem<String>>((e) {
+                        return DropdownMenuItem<String>(
+                            // enabled: true,
+                            // alignment : AlignmentDirectional.bottomStart,
+                            value: e,
+                            child: Text(e.toString()));
+                      }).toList(),
+                      onChanged: (String? value) {
+                        setState(() {
+                          _listName = value!;
+                        });
+                      }),
                     image:  Column(mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
