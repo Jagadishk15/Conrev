@@ -30,6 +30,8 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_riverpod: ^1.0.3
+  hooks_riverpod: ^1.0.4
+  flutter_hooks: ^0.18.5+1
   sizer: ^2.0.15
   filesize: ^2.0.1
   permission_handler: any

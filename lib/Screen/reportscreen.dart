@@ -1,5 +1,3 @@
-
-import 'package:conrev/Screen/ReportList.dart';
 import 'package:date_time_picker/date_time_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -17,17 +15,17 @@ class Report extends ConsumerStatefulWidget {
 }
 
 class _ReportState extends ConsumerState<Report> {
-List list=['l','m','s'];
+  List list = ['l', 'm', 's'];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text('Report'),
         leading: IconButton(
-          onPressed: (){
-            Navigator.pop(context);
-          },
-          icon: Icon(Icons.arrow_back_ios_new_sharp)),
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            icon: Icon(Icons.arrow_back_ios_new_sharp)),
         centerTitle: true,
         automaticallyImplyLeading: false,
         backgroundColor: Customcolor().blacktheme,
@@ -39,8 +37,7 @@ List list=['l','m','s'];
             ),
             color: Colors.white,
             onPressed: () {
-
-           //   MainBottomsheet(context);
+              //   MainBottomsheet(context);
             },
           ),
         ],
@@ -48,188 +45,181 @@ List list=['l','m','s'];
       body: SingleChildScrollView(
         physics: BouncingScrollPhysics(),
         child: Column(
-           children: [
-             SizedBox(
-                height: 20,
-              ),
-              Row(
-              children: [
-                SizedBox(
-                width: 10,
-              ),
-              Text(
-                'Filter',
-                style: TextStyle(
-                  letterSpacing: 1,
-                  fontWeight: FontWeight.w600,
-                  fontFamily: "Gilroy",
-                  fontSize: 14.sp,
-                  // color: Color.fromARGB(255, 138, 88, 247)
-                  //color: Color.fromARGB(255, 255, 0, 98)
-                  //color: Color(0xffffffff)
-                ),
-              ),
-              ],
+          children: [
+            SizedBox(
+              height: 20,
             ),
-            
-                CustomDropdown(
-                    image: Icon(
-                      Icons.filter_alt,
-                      color: Color.fromARGB(255, 138, 88, 247),
-                    ),
-                    listed: list,
-                    listname: 'Select',
-                  ),
-                  SizedBox(
-                height: 20,
-              ),
-                  Row(
-              children: [
-                SizedBox(
-                width: 10,
-              ),
-              Text(
-                'Select',
-                style: TextStyle(
-                  letterSpacing: 1,
-                  fontWeight: FontWeight.w600,
-                  fontFamily: "Gilroy",
-                  fontSize: 14.sp,
-                  // color: Color.fromARGB(255, 138, 88, 247)
-                  //color: Color.fromARGB(255, 255, 0, 98)
-                  //color: Color(0xffffffff)
-                ),
-              ),
-              ],
-            ),
-             CustomDropdown(
-                    image: Icon(
-                      Icons.notifications,
-                      color: Color.fromARGB(255, 138, 88, 247),
-                    ),
-                    listed: list,
-                    listname: 'Select',
-                  ),
-                   CustomDropdown(
-                    image:    Column(mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                'KW',
-                style: TextStyle(
-                  letterSpacing: 1,
-                  fontWeight: FontWeight.w600,
-                  fontFamily: "Gilroy",
-                  fontSize: 10.sp,
-                  color: Color.fromARGB(255, 138, 88, 247)
-                  //color: Color.fromARGB(255, 255, 0, 98)
-                  //color: Color(0xffffffff)
-                ),
-              ),
-                      ],
-                    ),
-                    listed: list,
-                    listname: 'Select',
-                  ),
-                   CustomDropdown(
-                    image:  Column(mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                'SKW',
-                style: TextStyle(
-                  letterSpacing: 1,
-                  fontWeight: FontWeight.w600,
-                  fontFamily: "Gilroy",
-                  fontSize: 10.sp,
-                  color: Color.fromARGB(255, 138, 88, 247)
-                  //color: Color.fromARGB(255, 255, 0, 98)
-                  //color: Color(0xffffffff)
-                ),
-              ),
-                      ],
-                    ),
-                    listed: list,
-                    listname: 'Select',
-                  ),
-             SizedBox(
-                height: 20,
-              ),
             Row(
               children: [
                 SizedBox(
-                width: 10,
-              ),
-              Text(
-                'From Date',
-                style: TextStyle(
-                  letterSpacing: 1,
-                  fontWeight: FontWeight.w600,
-                  fontFamily: "Gilroy",
-                  fontSize: 14.sp,
-                  // color: Color.fromARGB(255, 138, 88, 247)
-                  //color: Color.fromARGB(255, 255, 0, 98)
-                  //color: Color(0xffffffff)
+                  width: 10,
                 ),
-              ),
+                Text(
+                  'Filter',
+                  style: TextStyle(
+                    letterSpacing: 1,
+                    fontWeight: FontWeight.w600,
+                    fontFamily: "Gilroy",
+                    fontSize: 14.sp,
+                    // color: Color.fromARGB(255, 138, 88, 247)
+                    //color: Color.fromARGB(255, 255, 0, 98)
+                    //color: Color(0xffffffff)
+                  ),
+                ),
               ],
             ),
-            
+            CustomDropdown(
+              image: Icon(
+                Icons.filter_alt,
+                color: Color.fromARGB(255, 138, 88, 247),
+              ),
+              listed: list,
+              listname: 'Select',
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            Row(
+              children: [
+                SizedBox(
+                  width: 10,
+                ),
+                Text(
+                  'Select',
+                  style: TextStyle(
+                    letterSpacing: 1,
+                    fontWeight: FontWeight.w600,
+                    fontFamily: "Gilroy",
+                    fontSize: 14.sp,
+                    // color: Color.fromARGB(255, 138, 88, 247)
+                    //color: Color.fromARGB(255, 255, 0, 98)
+                    //color: Color(0xffffffff)
+                  ),
+                ),
+              ],
+            ),
+            CustomDropdown(
+              image: Icon(
+                Icons.notifications,
+                color: Color.fromARGB(255, 138, 88, 247),
+              ),
+              listed: list,
+              listname: 'Select',
+            ),
+            CustomDropdown(
+              image: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    'KW',
+                    style: TextStyle(
+                        letterSpacing: 1,
+                        fontWeight: FontWeight.w600,
+                        fontFamily: "Gilroy",
+                        fontSize: 10.sp,
+                        color: Color.fromARGB(255, 138, 88, 247)
+                        //color: Color.fromARGB(255, 255, 0, 98)
+                        //color: Color(0xffffffff)
+                        ),
+                  ),
+                ],
+              ),
+              listed: list,
+              listname: 'Select',
+            ),
+            CustomDropdown(
+              image: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    'SKW',
+                    style: TextStyle(
+                        letterSpacing: 1,
+                        fontWeight: FontWeight.w600,
+                        fontFamily: "Gilroy",
+                        fontSize: 10.sp,
+                        color: Color.fromARGB(255, 138, 88, 247)
+                        //color: Color.fromARGB(255, 255, 0, 98)
+                        //color: Color(0xffffffff)
+                        ),
+                  ),
+                ],
+              ),
+              listed: list,
+              listname: 'Select',
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            Row(
+              children: [
+                SizedBox(
+                  width: 10,
+                ),
+                Text(
+                  'From Date',
+                  style: TextStyle(
+                    letterSpacing: 1,
+                    fontWeight: FontWeight.w600,
+                    fontFamily: "Gilroy",
+                    fontSize: 14.sp,
+                    // color: Color.fromARGB(255, 138, 88, 247)
+                    //color: Color.fromARGB(255, 255, 0, 98)
+                    //color: Color(0xffffffff)
+                  ),
+                ),
+              ],
+            ),
             datepickerfrom(),
-             SizedBox(
-                height: 20,
-              ),
+            SizedBox(
+              height: 20,
+            ),
             Row(
               children: [
                 SizedBox(
-                width: 10,
-              ),
-              Text(
-                'To Date',
-                style: TextStyle(
-                  letterSpacing: 1,
-                  fontWeight: FontWeight.w600,
-                  fontFamily: "Gilroy",
-                  fontSize: 14.sp,
-                  // color: Color.fromARGB(255, 138, 88, 247)
-                  //color: Color.fromARGB(255, 255, 0, 98)
-                  //color: Color(0xffffffff)
+                  width: 10,
                 ),
-              ),
+                Text(
+                  'To Date',
+                  style: TextStyle(
+                    letterSpacing: 1,
+                    fontWeight: FontWeight.w600,
+                    fontFamily: "Gilroy",
+                    fontSize: 14.sp,
+                    // color: Color.fromARGB(255, 138, 88, 247)
+                    //color: Color.fromARGB(255, 255, 0, 98)
+                    //color: Color(0xffffffff)
+                  ),
+                ),
               ],
             ),
             datepickerto(),
-            
             SizedBox(
-                height: 20,
-              ),
-                next('Get Report',(){
-                   ref.read(reportHelper).getreport(context);
-                  //  Navigator.push(context,
-                  //             MaterialPageRoute(builder: ((context) {
-                  //           return ReportListed();
-                  //         })));
-             
-            },
-             Customcolor().theam,
-           // Color.fromARGB(255, 182, 12, 0),
-            Colors.white
+              height: 20,
             ),
-            next('Clear',(){
+            next('Get Report', () {
+              ref.read(reportHelper).getreport(context);
+              //  Navigator.push(context,
+              //             MaterialPageRoute(builder: ((context) {
+              //           return ReportListed();
+              //         })));
+            },
+                Customcolor().theam,
+                // Color.fromARGB(255, 182, 12, 0),
+                Colors.white),
+            next('Clear', () {
               print('object');
-            },
-            Colors.white,
-           Customcolor().theam
+            }, Colors.white, Customcolor().theam),
+            SizedBox(
+              height: 20,
             ),
-          
-             SizedBox(
-                height: 20,
-              ),
-           ],
+          ],
         ),
       ),
-      );
-      
+    );
   }
-   Widget next( String text,Function ontapped,Color colors,Color textcolor) {
+
+  Widget next(String text, Function ontapped, Color colors, Color textcolor) {
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 15, vertical: 20),
       child: MaterialButton(
@@ -245,7 +235,7 @@ List list=['l','m','s'];
           child: Text(
             text,
             style: TextStyle(
-              color:textcolor,
+              color: textcolor,
               fontSize: 12.sp,
               fontWeight: FontWeight.bold,
               letterSpacing: .5,
@@ -254,14 +244,15 @@ List list=['l','m','s'];
         ),
         minWidth: 100.w,
         elevation: 5,
-       color: colors,
+        color: colors,
         shape: RoundedRectangleBorder(
           borderRadius: const BorderRadius.all(Radius.circular(50.0)),
         ),
       ),
     );
   }
-   Widget datepickerfrom() {
+
+  Widget datepickerfrom() {
     return Column(
       children: [
         SizedBox(
@@ -269,11 +260,8 @@ List list=['l','m','s'];
         ),
         InkWell(
           onTap: () {
-            
-setState(() {
-  
-});
-           // _restorableDatePickerRouteFuture.present();
+            setState(() {});
+            // _restorableDatePickerRouteFuture.present();
           },
           child: Container(
             margin: EdgeInsets.only(left: 10, top: 10, right: 8.sp),
@@ -295,13 +283,13 @@ setState(() {
               children: [
                 Container(
                     height: double.infinity,
-                     width: 50,
+                    width: 50,
                     // width: 70,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.only(
                           topLeft: Radius.circular(9),
                           bottomLeft: Radius.circular(9)),
-                     color: Colors.grey[400],
+                      color: Colors.grey[400],
                       boxShadow: [
                         BoxShadow(
                           color: Colors.black12,
@@ -318,33 +306,33 @@ setState(() {
                 SizedBox(
                   width: 10,
                 ),
-                   Expanded(
-                     child: DateTimePicker(
-                     type: DateTimePickerType.date,
-                     dateMask: 'd MMM, yyyy',
-                     initialValue: DateTime.now().toString(),
-                     firstDate: DateTime(2000),
-                     lastDate: DateTime(2100),
-                     decoration: InputDecoration(border: InputBorder.none),
-                     // icon: Icon(Icons.event),
-                     dateLabelText: 'Date',
-                     timeLabelText: "Hour",
-                     selectableDayPredicate: (date) {
-                       // Disable weekend days to select from the calendar
-                       if (date.weekday == 6 || date.weekday == 7) {
-                         return false;
-                       }
-                   
-                       return true;
-                     },
-                     onChanged: (val) => print(val),
-                     validator: (val) {
-                       print(val);
-                       return null;
-                     },
-                     onSaved: (val) => print(val),
-                   ),
-                   ),
+                Expanded(
+                  child: DateTimePicker(
+                    type: DateTimePickerType.date,
+                    dateMask: 'd MMM, yyyy',
+                    initialValue: DateTime.now().toString(),
+                    firstDate: DateTime(2000),
+                    lastDate: DateTime(2100),
+                    decoration: InputDecoration(border: InputBorder.none),
+                    // icon: Icon(Icons.event),
+                    dateLabelText: 'Date',
+                    timeLabelText: "Hour",
+                    selectableDayPredicate: (date) {
+                      // Disable weekend days to select from the calendar
+                      if (date.weekday == 6 || date.weekday == 7) {
+                        return false;
+                      }
+
+                      return true;
+                    },
+                    onChanged: (val) => print(val),
+                    validator: (val) {
+                      print(val);
+                      return null;
+                    },
+                    onSaved: (val) => print(val),
+                  ),
+                ),
                 // Text(
                 //     ' ${_selectedDate.day}/${_selectedDate.month}/${_selectedDate.year}'),
               ],
@@ -354,7 +342,8 @@ setState(() {
       ],
     );
   }
-   Widget datepickerto() {
+
+  Widget datepickerto() {
     return Column(
       children: [
         SizedBox(
@@ -362,11 +351,8 @@ setState(() {
         ),
         InkWell(
           onTap: () {
-            
-setState(() {
-  
-});
-           // _restorableDatePickerRouteFuture.present();
+            setState(() {});
+            // _restorableDatePickerRouteFuture.present();
           },
           child: Container(
             margin: EdgeInsets.only(left: 10, top: 10, right: 8.sp),
@@ -388,13 +374,13 @@ setState(() {
               children: [
                 Container(
                     height: double.infinity,
-                     width: 50,
+                    width: 50,
                     // width: 70,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.only(
                           topLeft: Radius.circular(9),
                           bottomLeft: Radius.circular(9)),
-                     color: Colors.grey[400],
+                      color: Colors.grey[400],
                       boxShadow: [
                         BoxShadow(
                           color: Colors.black12,
@@ -411,33 +397,33 @@ setState(() {
                 SizedBox(
                   width: 10,
                 ),
-                   Expanded(
-                     child: DateTimePicker(
-                     type: DateTimePickerType.date,
-                     dateMask: 'd MMM, yyyy',
-                     initialValue: DateTime.now().toString(),
-                     firstDate: DateTime(2000),
-                     lastDate: DateTime(2100),
-                     decoration: InputDecoration(border: InputBorder.none),
-                     // icon: Icon(Icons.event),
-                     dateLabelText: 'Date',
-                     timeLabelText: "Hour",
-                     selectableDayPredicate: (date) {
-                       // Disable weekend days to select from the calendar
-                       if (date.weekday == 6 || date.weekday == 7) {
-                         return false;
-                       }
-                   
-                       return true;
-                     },
-                     onChanged: (val) => print(val),
-                     validator: (val) {
-                       print(val);
-                       return null;
-                     },
-                     onSaved: (val) => print(val),
-                   ),
-                   ),
+                Expanded(
+                  child: DateTimePicker(
+                    type: DateTimePickerType.date,
+                    dateMask: 'd MMM, yyyy',
+                    initialValue: DateTime.now().toString(),
+                    firstDate: DateTime(2000),
+                    lastDate: DateTime(2100),
+                    decoration: InputDecoration(border: InputBorder.none),
+                    // icon: Icon(Icons.event),
+                    dateLabelText: 'Date',
+                    timeLabelText: "Hour",
+                    selectableDayPredicate: (date) {
+                      // Disable weekend days to select from the calendar
+                      if (date.weekday == 6 || date.weekday == 7) {
+                        return false;
+                      }
+
+                      return true;
+                    },
+                    onChanged: (val) => print(val),
+                    validator: (val) {
+                      print(val);
+                      return null;
+                    },
+                    onSaved: (val) => print(val),
+                  ),
+                ),
                 // Text(
                 //     ' ${_selectedDate.day}/${_selectedDate.month}/${_selectedDate.year}'),
               ],
