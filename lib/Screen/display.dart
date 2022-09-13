@@ -47,7 +47,7 @@ class _DisplayState extends ConsumerState<Display> {
         ],
       ),
       body: data == null
-          ? CircularProgressIndicator()
+          ? Center(child: CircularProgressIndicator())
           : ListView(
               padding: EdgeInsets.all(15),
               children: [

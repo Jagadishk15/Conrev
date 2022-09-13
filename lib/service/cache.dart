@@ -11,7 +11,7 @@ class Cache {
 
   Future<void> setLogin(bool? value) async {
     SharedPreferences? shared = await SharedPreferences.getInstance();
-    shared.setBool(TOKEN, value!);
+    shared.setBool(LOGIN, value!);
   }
 
   Future<void> setAccessToken(String? value) async {
@@ -28,6 +28,7 @@ class Cache {
 
   Future<String?> getAccessToken() async {
     SharedPreferences? shared = await SharedPreferences.getInstance();
-    return shared.getString(TOKEN);
+    var token = shared.getString(TOKEN);
+    return token;
   }
 }

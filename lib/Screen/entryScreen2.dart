@@ -64,96 +64,18 @@ class _EntryNextScreenState extends ConsumerState<EntryNextScreen> {
       if (filePickerResult == null) {
       } else {
         File _file = File("${filePickerResult.files.single.path}");
-
+        ref.read(entryHelper).file =
+            filePickerResult.paths.map((path) => File(path!)).toList();
         // dpprovider.profilebg=_file;
 
         print(_file);
-
-        // showModalBottomSheet(
-        //   isScrollControlled: true,
-        //   backgroundColor: Colors.black.withOpacity(0.5),
-        //   context: context,
-        //   builder: (context) => Container(
-        //     margin: EdgeInsets.all(15),
-        //     child: Column(
-        //       mainAxisAlignment: MainAxisAlignment.center,
-        //       children: [
-        //         Container(
-        //           height: 250,
-        //           width: double.infinity,
-        //           decoration: BoxDecoration(
-        //             borderRadius: BorderRadius.circular(10),
-        //             color: Colors.white,
-        //           ),
-        //           padding: EdgeInsets.all(10),
-        //           alignment: Alignment.center,
-        //           child: Image.file(
-        //             _file,
-        //             fit: BoxFit.fill,
-        //           ),
-        //         ),
-        //         SizedBox(
-        //           height: 15,
-        //         ),
-        //         Row(
-        //           mainAxisAlignment: MainAxisAlignment.center,
-        //           children: [
-        //             MaterialButton(
-        //               onPressed: () {
-        //                 Navigator.pop(context);
-        //               },
-        //               color: Color(0xff591B4C),
-        //               child: Padding(
-        //                 padding: EdgeInsets.fromLTRB(30, 10, 30, 10),
-        //                 child: Text(
-        //                   "Cancel",
-        //                   style: TextStyle(
-        //                     fontSize: 18,
-        //                     color: Colors.white,
-        //                     fontWeight: FontWeight.w400,
-        //                     //  fontFamily: 'Gilroy',
-        //                   ),
-        //                 ),
-        //               ),
-        //             ),
-        //             SizedBox(
-        //               width: 15,
-        //             ),
-        //             MaterialButton(
-        //               onPressed: () {
-        //                 //  uploadImageToDB(_file,ref.watch(profilebgprov));
-        //                 _filedata = _file;
-        //                 // ref.watch(productupload).tumbnail = _file;
-        //                 setState(() {});
-        //                 print(_file);
-        //                 final fs2 = filesize(_filedata!.lengthSync());
-        //                 print(fs2);
-        //                 Navigator.pop(context);
-        //               },
-        //               color: Color(0xff591B4C),
-        //               child: Padding(
-        //                 padding: EdgeInsets.fromLTRB(30, 10, 30, 10),
-        //                 child: Text(
-        //                   "Confirm",
-        //                   style: TextStyle(
-        //                     fontSize: 18,
-        //                     color: Colors.white,
-        //                     fontWeight: FontWeight.w400,
-        //                     //  fontFamily: 'Gilroy',
-        //                   ),
-        //                 ),
-        //               ),
-        //             ),
-        //           ],
-        //         ),
-        //       ],
-        //     ),
-        //   ),
-        // );
       }
     }
   }
 
+  String _listName = "P";
+  String _listName1 = "D";
+  String _listName2 = "M";
   List list = ['L', "F", "S", "P", "T", "C"];
   List list1 = ['N', "D", "A", 'T', "W", "F", 'M', "Q", "H", "Y"];
   List list2 = [
@@ -163,65 +85,6 @@ class _EntryNextScreenState extends ConsumerState<EntryNextScreen> {
   ];
 
   String? name1;
-  // String? name2 = 'P1';
-  // String? name3 = 'P';
-  // String? name4 = 'P';
-//  @override
-//   String? get restorationId => widget.restorationId;
-//   DateTime selectedDate = DateTime.now();
-//   final RestorableDateTime _selectedDate =
-//       RestorableDateTime(
-
-//         //DateTime.now()
-//         DateTime(2021, 7, 25)
-//         );
-//   late final RestorableRouteFuture<DateTime?> _restorableDatePickerRouteFuture =
-//       RestorableRouteFuture<DateTime?>(
-//     onComplete: _selectDate,
-//     onPresent: (NavigatorState navigator, Object? arguments) {
-//       return navigator.restorablePush(
-//         _datePickerRoute,
-//         arguments: _selectedDate.value.millisecondsSinceEpoch,
-//       );
-//     },
-//   );
-
-//   static Route<DateTime> _datePickerRoute(
-//     BuildContext context,
-//     Object? arguments,
-//   ) {
-//     return DialogRoute<DateTime>(
-//       context: context,
-//       builder: (BuildContext context) {
-//         return DatePickerDialog(
-//           restorationId: 'date_picker_dialog',
-//           initialEntryMode: DatePickerEntryMode.calendarOnly,
-//           initialDate: DateTime.fromMillisecondsSinceEpoch(arguments! as int),
-//           firstDate: DateTime(2021),
-//           lastDate: DateTime(2022),
-//         );
-//       },
-//     );
-//   }
-
-//   @override
-//   void restoreState(RestorationBucket? oldBucket, bool initialRestore) {
-//     registerForRestoration(_selectedDate, 'selected_date');
-//     registerForRestoration(
-//         _restorableDatePickerRouteFuture, 'date_picker_route_future');
-//   }
-
-//   void _selectDate(DateTime? newSelectedDate) {
-//     if (newSelectedDate != null) {
-//       setState(() {
-//         _selectedDate.value = newSelectedDate;
-//         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-//           content: Text(
-//               'Selected: ${_selectedDate.value.day}/${_selectedDate.value.month}/${_selectedDate.value.year}'),
-//         ));
-//       });
-//     }
-//   }
 
   @override
   Widget build(BuildContext context) {
@@ -346,12 +209,72 @@ class _EntryNextScreenState extends ConsumerState<EntryNextScreen> {
                     //   listname: 'N',
                     // ),
                     CustomDropdown(
+                      dropdown: DropdownButton(
+                          isExpanded: false,
+                          menuMaxHeight: 300,
+                          icon: Row(
+                            //   mainAxisAlignment: MainAxisAlignment.start,
+                            //  crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text("${helper.Strip}"),
+
+                              //  Padding(
+                              //       padding: const EdgeInsets.only(right:18.0),
+                              //    child: Icon(Icons.keyboard_arrow_down_sharp, color: Customcolor().blacktheme, size: 28),
+                              //  ),
+                            ],
+                          ),
+                          iconSize: 28,
+                          elevation: 4,
+                          underline: Container(),
+                          items: list.map<DropdownMenuItem<String>>((e) {
+                            return DropdownMenuItem<String>(
+                                // enabled: true,
+                                // alignment : AlignmentDirectional.bottomStart,
+                                value: e,
+                                child: Text(e.toString()));
+                          }).toList(),
+                          onChanged: (String? value) {
+                            setState(() {
+                              helper.Strip = value!;
+                            });
+                          }),
                       image: Image.asset('Assets/stripe.png',
                           width: 40, color: Color.fromARGB(255, 138, 88, 247)),
                       listed: list,
                       listname: 'P',
                     ),
                     CustomDropdown(
+                      dropdown: DropdownButton(
+                          isExpanded: false,
+                          menuMaxHeight: 300,
+                          icon: Row(
+                            //   mainAxisAlignment: MainAxisAlignment.start,
+                            //  crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text("${helper.notif}"),
+
+                              //  Padding(
+                              //       padding: const EdgeInsets.only(right:18.0),
+                              //    child: Icon(Icons.keyboard_arrow_down_sharp, color: Customcolor().blacktheme, size: 28),
+                              //  ),
+                            ],
+                          ),
+                          iconSize: 28,
+                          elevation: 4,
+                          underline: Container(),
+                          items: list1.map<DropdownMenuItem<String>>((e) {
+                            return DropdownMenuItem<String>(
+                                // enabled: true,
+                                // alignment : AlignmentDirectional.bottomStart,
+                                value: e,
+                                child: Text(e.toString()));
+                          }).toList(),
+                          onChanged: (String? value) {
+                            setState(() {
+                              helper.notif = value!;
+                            });
+                          }),
                       image: Icon(
                         Icons.notifications,
                         color: Color.fromARGB(255, 138, 88, 247),
@@ -360,6 +283,36 @@ class _EntryNextScreenState extends ConsumerState<EntryNextScreen> {
                       listname: 'N',
                     ),
                     CustomDropdown(
+                      dropdown: DropdownButton(
+                          isExpanded: false,
+                          menuMaxHeight: 300,
+                          icon: Row(
+                            //   mainAxisAlignment: MainAxisAlignment.start,
+                            //  crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text("${helper.freq}"),
+
+                              //  Padding(
+                              //       padding: const EdgeInsets.only(right:18.0),
+                              //    child: Icon(Icons.keyboard_arrow_down_sharp, color: Customcolor().blacktheme, size: 28),
+                              //  ),
+                            ],
+                          ),
+                          iconSize: 28,
+                          elevation: 4,
+                          underline: Container(),
+                          items: list2.map<DropdownMenuItem<String>>((e) {
+                            return DropdownMenuItem<String>(
+                                // enabled: true,
+                                // alignment : AlignmentDirectional.bottomStart,
+                                value: e,
+                                child: Text(e.toString()));
+                          }).toList(),
+                          onChanged: (String? value) {
+                            setState(() {
+                              helper.freq = value!;
+                            });
+                          }),
                       image: Icon(
                         Icons.traffic,
                         color: Color.fromARGB(255, 138, 88, 247),
@@ -378,6 +331,7 @@ class _EntryNextScreenState extends ConsumerState<EntryNextScreen> {
                     datepicker(),
                     InkWell(
                       onTap: () {
+                        ref.read(entryHelper).getEntry(context);
                         // Navigator.push(context, MaterialPageRoute(builder: ((context) {
                         //   return EntryNextScreen();
                         // })));
@@ -450,106 +404,9 @@ class _EntryNextScreenState extends ConsumerState<EntryNextScreen> {
       ],
     );
   }
-  // Widget droupdownfield(String image, List listed, String? listname) {
-  //   return Column(
-  //     children: [
-  //       SizedBox(
-  //         height: 10,
-  //       ),
-  //       InkWell(
-  //         onTap: () {},
-  //         child: Container(
-  //           margin: EdgeInsets.only(left: 10, top: 10, right: 8.sp),
-  //           // width: 51.w,
-  //           height: 15.w,
-  //           decoration: BoxDecoration(
-  //             borderRadius: BorderRadius.circular(9),
-  //             color: Colors.white,
-  //             boxShadow: [
-  //               BoxShadow(
-  //                 color: Colors.black12,
-  //                 spreadRadius: 1,
-  //                 blurRadius: 5,
-  //                 offset: Offset(2, 2), // changes position of shadow
-  //               ),
-  //             ],
-  //           ),
-  //           child: Row(
-  //             children: [
-  //               Container(
-  //                   height: double.infinity,
-  //                   // width: 70,
-  //                   decoration: BoxDecoration(
-  //                     borderRadius: BorderRadius.only(
-  //                         topLeft: Radius.circular(9),
-  //                         bottomLeft: Radius.circular(9)),
-  //                     color: Colors.grey,
-  //                     boxShadow: [
-  //                       BoxShadow(
-  //                         color: Colors.black12,
-  //                         spreadRadius: 1,
-  //                         blurRadius: 5,
-  //                         offset: Offset(2, 2), // changes position of shadow
-  //                       ),
-  //                     ],
-  //                   ),
-  //                   child: Padding(
-  //                     padding: const EdgeInsets.all(8.0),
-  //                     child: Image.asset(
-  //                       image,
-  //                       width: 40,
-  //                     ),
-  //                   )),
-  //               SizedBox(
-  //                 width: 10,
-  //               ),
-  //               Expanded(
-  //                 child: DropdownButton(
-  //                     isExpanded: false,
-  //                     menuMaxHeight: 300,
-  //                     //alignment: AlignmentGeometry.,
-  //                     // hint: Padding(
-  //                     //   padding: const EdgeInsets.only(left:18.0),
-  //                     //   child:  Text("$_currentSugars"),
-  //                     // ),
-  //                     // alignment : AlignmentDirectional.bottomStart,
-  //                     icon: Row(
-  //                       //   mainAxisAlignment: MainAxisAlignment.start,
-  //                       //  crossAxisAlignment: CrossAxisAlignment.start,
-  //                       children: [
-  //                         Text("$name1"),
-
-  //                         //  Padding(
-  //                         //       padding: const EdgeInsets.only(right:18.0),
-  //                         //    child: Icon(Icons.keyboard_arrow_down_sharp, color: Customcolor().blacktheme, size: 28),
-  //                         //  ),
-  //                       ],
-  //                     ),
-  //                     iconSize: 28,
-  //                     elevation: 4,
-  //                     underline: Container(),
-  //                     items: listed.map<DropdownMenuItem<String>>((e) {
-  //                       return DropdownMenuItem<String>(
-  //                           // enabled: true,
-  //                           // alignment : AlignmentDirectional.bottomStart,
-  //                           value: e,
-  //                           child: Text(e.toString()));
-  //                     }).toList(),
-  //                     onChanged: (String? value) {
-  //                       setState(() {
-  //                         name1 = value!;
-  //                       });
-  //                     }),
-  //               ),
-  //             ],
-  //           ),
-  //         ),
-  //       ),
-  //     ],
-  //   );
-  // }
 
   Widget datepicker() {
+    final helper = ref.read(entryHelper);
     return Column(
       children: [
         SizedBox(
@@ -614,20 +471,27 @@ class _EntryNextScreenState extends ConsumerState<EntryNextScreen> {
                     // icon: Icon(Icons.event),
                     dateLabelText: 'Date',
                     timeLabelText: "Hour",
-                    selectableDayPredicate: (date) {
-                      // Disable weekend days to select from the calendar
-                      if (date.weekday == 6 || date.weekday == 7) {
-                        return false;
-                      }
+                    //  selectableDayPredicate: (date) {
 
-                      return true;
-                    },
-                    onChanged: (val) => print(val),
-                    validator: (val) {
+                    //  }
+                    onChanged: (val) {
+                      helper.date = val;
                       print(val);
-                      return null;
                     },
-                    onSaved: (val) => print(val),
+                    // selectableDayPredicate: (date) {
+                    //   // Disable weekend days to select from the calendar
+                    //   if (date.weekday == 6 || date.weekday == 7) {
+                    //     return false;
+                    //   }
+
+                    //   return true;
+                    // },
+                    // onChanged: (val) => print(val),
+                    // validator: (val) {
+                    //   print(val);
+                    //   return null;
+                    // },
+                    // onSaved: (val) => print(val),
                   ),
                 ),
                 // Text(

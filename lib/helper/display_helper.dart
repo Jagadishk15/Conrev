@@ -23,7 +23,7 @@ class DisplayHelper extends ChangeNotifier {
       String body = '/api/display';
       String url = URL.base + body;
 
-      // var response = await API().get(url);
+      var response = await API().get(url);
 
       // print(_response);
 
@@ -36,7 +36,7 @@ class DisplayHelper extends ChangeNotifier {
       List t = [];
       List c = [];
 
-      for (var item in _response['data'] ?? []) {
+      for (var item in response['data'] ?? []) {
         switch (item["strip"]) {
           case "L":
             l.add(item);

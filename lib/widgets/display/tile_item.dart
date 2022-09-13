@@ -1,4 +1,3 @@
-import 'package:conrev/helper/display_helper.dart';
 import 'package:conrev/model/display.model.dart';
 import 'package:conrev/widgets/display/description.dart';
 import 'package:conrev/widgets/display/priority_pop_up.dart';
