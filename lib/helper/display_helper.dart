@@ -1,56 +1,95 @@
 import 'package:conrev/Utils/Utils.dart';
+import 'package:conrev/model/display.model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../Utils/url.dart';
 import '../service/api.dart';
-import '../service/cache.dart';
 
 final displaytHelper = ChangeNotifierProvider((ref) => DisplayHelper());
 
 class DisplayHelper extends ChangeNotifier {
-  TextEditingController username = TextEditingController();
-  TextEditingController password = TextEditingController();
-  List f=[];
-  List p=[];
+  DisplayModel? model;
+
+  late TextEditingController description;
+
   void getdisplay(BuildContext context) async {
     try {
       // if (username.text.isEmpty || password.text.isEmpty)
-        // return Utils().toast(msg: 'Please fill all fields');
+      // return Utils().toast(msg: 'Please fill all fields');
 
       Utils().showLoader(context);
 
       String body = '/api/display';
       String url = URL.base + body;
 
-      String token = API().createAccessToken(
-        username: "Admin",
-        password: "Abcd1234",
-      );
-
-      await Cache().setAccessToken(token);
-
       var response = await API().get(url);
-   
-      Utils().dismissLoader(context);
-           
-           
-          //  for (var i = 0; i < response['data'].length; i++) {
-          //      if ( response['data'][i]['strip']=="P") {
-          //        print(response['data'][i]['strip'][i].length);
-          //      }
-              //   else if(response['data'][i]['strip']=="P") {
 
-              //  }
-              //   if () {
-                 
-              //  } else if() {
-              //  } if () {
-                 
-              //  } else if() {
-              //  }
-          //   print( response['data'].length);
-        //   }
+      // print(_response);
+
+      Utils().dismissLoader(context);
+
+      List l = [];
+      List f = [];
+      List s = [];
+      List p = [];
+      List t = [];
+      List c = [];
+
+      for (var item in response['data'] ?? []) {
+        switch (item["strip"]) {
+          case "L":
+            l.add(item);
+            break;
+          case "F":
+            f.add(item);
+            break;
+          case "S":
+            s.add(item);
+            break;
+          case "P":
+            p.add(item);
+            break;
+          case "T":
+            t.add(item);
+            break;
+          case "C":
+            c.add(item);
+            break;
+
+          default:
+        }
+      }
+
+      Map<String, dynamic> data = {};
+
+      data['l'] = l;
+      data['f'] = f;
+      data['s'] = s;
+      data['p'] = p;
+      data['t'] = t;
+      data['c'] = c;
+
+      model = DisplayModel.fromJson(data);
+
+      notifyListeners();
+
+      //  for (var i = 0; i < response['data'].length; i++) {
+      //      if ( response['data'][i]['strip']=="P") {
+      //        print(response['data'][i]['strip'][i].length);
+      //      }
+      //   else if(response['data'][i]['strip']=="P") {
+
+      //  }
+      //   if () {
+
+      //  } else if() {
+      //  } if () {
+
+      //  } else if() {
+      //  }
+      //   print( response['data'].length);
+      //   }
       // Utils().toast(msg: response['data'].length);
 
       // if (response['message'] == "Entry updated") {
@@ -72,4 +111,249 @@ class DisplayHelper extends ChangeNotifier {
       Utils().toast(msg: e.toString());
     }
   }
+
+  String getPriorityString(int priority) {
+    switch (priority) {
+      case 1:
+        return "Low";
+      case 2:
+        return "Medium";
+      case 3:
+        return "High";
+      default:
+        return "No Priority";
+    }
+  }
+
+  Color getPriorityColor(int priority) {
+    switch (priority) {
+      case 1:
+        return Colors.yellow.shade900;
+
+      default:
+        return Colors.yellow.shade900;
+    }
+  }
+
+  Map<String, dynamic> _response = {
+    'data': [
+      {
+        "ent_id": 67,
+        "head_id": 33,
+        "subhead_id": 35,
+        "description": "<p>ok</p>",
+        "file": "i56VbbnAJsScreenShot-2022-6-2_22-37-16.png,",
+        "name": "abhi",
+        "k_id": 1,
+        "sk_id": 1,
+        "frequency": "D",
+        "strip": "P",
+        "priority": 2,
+        "reminder_stamp": null,
+        "insert_date": "2022-09-07",
+        "reminder_date": "2022-09-05",
+        "status": 1,
+        "archive": 0,
+        "newdata": "1",
+        "datetime": "2022-07-29 04:55:58",
+        "h_id": 33,
+        "head_name": "sss",
+        "sh_id": 35,
+        "subhead_name": "hhh",
+        "cm_id": null,
+        "msg": null,
+        "e_id": null,
+        "cm_datetime": null,
+        "k_name": "nations",
+        "sk_name": "sssssssss",
+        "sk_datetime": "2022-07-29 06:05:44"
+      },
+      {
+        "ent_id": 67,
+        "head_id": 33,
+        "subhead_id": 35,
+        "description": "<p>ok</p>",
+        "file": "i56VbbnAJsScreenShot-2022-6-2_22-37-16.png,",
+        "name": "abhi",
+        "k_id": 1,
+        "sk_id": 1,
+        "frequency": "D",
+        "strip": "P",
+        "priority": 2,
+        "reminder_stamp": null,
+        "insert_date": "2022-09-07",
+        "reminder_date": "2022-09-05",
+        "status": 1,
+        "archive": 0,
+        "newdata": "1",
+        "datetime": "2022-07-29 04:55:58",
+        "h_id": 33,
+        "head_name": "sss",
+        "sh_id": 35,
+        "subhead_name": "hhh",
+        "cm_id": null,
+        "msg": null,
+        "e_id": null,
+        "cm_datetime": null,
+        "k_name": "nations",
+        "sk_name": "sssssssss",
+        "sk_datetime": "2022-07-29 06:05:44"
+      },
+      {
+        "ent_id": 67,
+        "head_id": 33,
+        "subhead_id": 35,
+        "description": "<p>ok</p>",
+        "file": "i56VbbnAJsScreenShot-2022-6-2_22-37-16.png,",
+        "name": "abhi",
+        "k_id": 1,
+        "sk_id": 1,
+        "frequency": "D",
+        "strip": "F",
+        "priority": 2,
+        "reminder_stamp": null,
+        "insert_date": "2022-09-07",
+        "reminder_date": "2022-09-05",
+        "status": 1,
+        "archive": 0,
+        "newdata": "1",
+        "datetime": "2022-07-29 04:55:58",
+        "h_id": 33,
+        "head_name": "sss",
+        "sh_id": 35,
+        "subhead_name": "hhh",
+        "cm_id": null,
+        "msg": null,
+        "e_id": null,
+        "cm_datetime": null,
+        "k_name": "nations",
+        "sk_name": "sssssssss",
+        "sk_datetime": "2022-07-29 06:05:44"
+      },
+      {
+        "ent_id": 67,
+        "head_id": 33,
+        "subhead_id": 35,
+        "description": "<p>ok</p>",
+        "file": "i56VbbnAJsScreenShot-2022-6-2_22-37-16.png,",
+        "name": "abhi",
+        "k_id": 1,
+        "sk_id": 1,
+        "frequency": "D",
+        "strip": "F",
+        "priority": 2,
+        "reminder_stamp": null,
+        "insert_date": "2022-09-07",
+        "reminder_date": "2022-09-05",
+        "status": 1,
+        "archive": 0,
+        "newdata": "1",
+        "datetime": "2022-07-29 04:55:58",
+        "h_id": 33,
+        "head_name": "sss",
+        "sh_id": 35,
+        "subhead_name": "hhh",
+        "cm_id": null,
+        "msg": null,
+        "e_id": null,
+        "cm_datetime": null,
+        "k_name": "nations",
+        "sk_name": "sssssssss",
+        "sk_datetime": "2022-07-29 06:05:44"
+      },
+      {
+        "ent_id": 67,
+        "head_id": 33,
+        "subhead_id": 35,
+        "description": "<p>ok</p>",
+        "file": "i56VbbnAJsScreenShot-2022-6-2_22-37-16.png,",
+        "name": "abhi",
+        "k_id": 1,
+        "sk_id": 1,
+        "frequency": "D",
+        "strip": "C",
+        "priority": 2,
+        "reminder_stamp": null,
+        "insert_date": "2022-09-07",
+        "reminder_date": "2022-09-05",
+        "status": 1,
+        "archive": 0,
+        "newdata": "1",
+        "datetime": "2022-07-29 04:55:58",
+        "h_id": 33,
+        "head_name": "sss",
+        "sh_id": 35,
+        "subhead_name": "hhh",
+        "cm_id": null,
+        "msg": null,
+        "e_id": null,
+        "cm_datetime": null,
+        "k_name": "nations",
+        "sk_name": "sssssssss",
+        "sk_datetime": "2022-07-29 06:05:44"
+      },
+      {
+        "ent_id": 67,
+        "head_id": 33,
+        "subhead_id": 35,
+        "description": "<p>ok</p>",
+        "file": "i56VbbnAJsScreenShot-2022-6-2_22-37-16.png,",
+        "name": "abhi",
+        "k_id": 1,
+        "sk_id": 1,
+        "frequency": "D",
+        "strip": "P",
+        "priority": 2,
+        "reminder_stamp": null,
+        "insert_date": "2022-09-07",
+        "reminder_date": "2022-09-05",
+        "status": 1,
+        "archive": 0,
+        "newdata": "1",
+        "datetime": "2022-07-29 04:55:58",
+        "h_id": 33,
+        "head_name": "sss",
+        "sh_id": 35,
+        "subhead_name": "hhh",
+        "cm_id": null,
+        "msg": null,
+        "e_id": null,
+        "cm_datetime": null,
+        "k_name": "nations",
+        "sk_name": "sssssssss",
+        "sk_datetime": "2022-07-29 06:05:44"
+      },
+      {
+        "ent_id": 67,
+        "head_id": 33,
+        "subhead_id": 35,
+        "description": "<p>ok</p>",
+        "file": "i56VbbnAJsScreenShot-2022-6-2_22-37-16.png,",
+        "name": "abhi",
+        "k_id": 1,
+        "sk_id": 1,
+        "frequency": "D",
+        "strip": "T",
+        "priority": 2,
+        "reminder_stamp": null,
+        "insert_date": "2022-09-07",
+        "reminder_date": "2022-09-05",
+        "status": 1,
+        "archive": 0,
+        "newdata": "1",
+        "datetime": "2022-07-29 04:55:58",
+        "h_id": 33,
+        "head_name": "sss",
+        "sh_id": 35,
+        "subhead_name": "hhh",
+        "cm_id": null,
+        "msg": null,
+        "e_id": null,
+        "cm_datetime": null,
+        "k_name": "nations",
+        "sk_name": "sssssssss",
+        "sk_datetime": "2022-07-29 06:05:44"
+      },
+    ],
+  };
 }

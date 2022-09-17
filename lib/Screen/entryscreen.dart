@@ -4,7 +4,6 @@ import 'package:sizer/sizer.dart';
 
 import '../custom/custom.dart';
 import '../helper/Entry_helper.dart';
-import 'entryScreen2.dart';
 
 class EntryScreen extends ConsumerStatefulWidget {
   const EntryScreen({Key? key}) : super(key: key);
@@ -14,8 +13,8 @@ class EntryScreen extends ConsumerStatefulWidget {
 }
 
 class _EntryScreenState extends ConsumerState<EntryScreen> {
-  TextEditingController _textcontroller1 = TextEditingController();
-  TextEditingController _textcontroller2 = TextEditingController();
+  // TextEditingController _textcontroller1 = TextEditingController();
+  // TextEditingController _textcontroller2 = TextEditingController();
   @override
   Widget build(BuildContext context) {
     final helper = ref.read(entryHelper);
@@ -47,7 +46,7 @@ class _EntryScreenState extends ConsumerState<EntryScreen> {
         ),
         textField(helper.head, "Head", ''),
         textField(helper.sub, "Sub", ''),
-         textField(helper.name, "Enter name", ''),
+        textField(helper.name, "Enter name", ''),
         description(),
         SizedBox(
           height: 20,
@@ -61,7 +60,7 @@ class _EntryScreenState extends ConsumerState<EntryScreen> {
             //               })));
             //  info.productname=_textcontroller1.text;
             //  info.description=_textcontroller2.text;
-            
+
             // onPressed(function: onpressedtitle);
           },
           child: Container(
@@ -71,7 +70,7 @@ class _EntryScreenState extends ConsumerState<EntryScreen> {
             decoration: BoxDecoration(
                 borderRadius: BorderRadiusDirectional.circular(5),
                 color: Customcolor().blacktheme
-               // color: Color(0xff591B4C)
+                // color: Color(0xff591B4C)
                 ),
             child: Center(
                 child: Text(
@@ -90,7 +89,7 @@ class _EntryScreenState extends ConsumerState<EntryScreen> {
   }
 
   Widget description() {
-     final helper = ref.read(entryHelper);
+    final helper = ref.read(entryHelper);
     return Container(
       margin: EdgeInsets.only(left: 10, top: 20, right: 8.sp),
       height: 35.h,
@@ -128,7 +127,6 @@ class _EntryScreenState extends ConsumerState<EntryScreen> {
       TextEditingController controller, String placeholder, String field) {
     return Column(
       children: [
-       
         Container(
             margin: EdgeInsets.only(left: 10, top: 10, right: 8.sp),
             // width: 51.w,

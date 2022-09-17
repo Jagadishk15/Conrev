@@ -32,7 +32,7 @@ class EntryHelper extends ChangeNotifier {
     }
   }
 
-  String? date= DateTime.now().toString();
+  String? date = DateTime.now().toString();
   List file = [];
   String? Strip = 'P';
   String? freq = 'D';
@@ -76,15 +76,15 @@ class EntryHelper extends ChangeNotifier {
 
       if (response.statusCode == 200) {
         Utils().toast(msg: response.data['message']);
-                         // Navigator.pop(context);
-                                 head.text ='';
-        sub.text='';
-         Description.text ='';
-          name.text='';
-          Kw.text='';
-          Swk.text='';
-          file=[];
-         Navigator.pushAndRemoveUntil(
+        // Navigator.pop(context);
+        head.text = '';
+        sub.text = '';
+        Description.text = '';
+        name.text = '';
+        Kw.text = '';
+        Swk.text = '';
+        file = [];
+        Navigator.pushAndRemoveUntil(
           context,
           MaterialPageRoute(builder: (_) => MainScreen()),
           (route) => false,
@@ -93,7 +93,7 @@ class EntryHelper extends ChangeNotifier {
         print('could not be uploaded');
       }
     } catch (e) {
-       Utils().toast(msg:e.toString());
+      Utils().toast(msg: e.toString());
       print(e);
     }
 

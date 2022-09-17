@@ -10,51 +10,43 @@ import '../service/cache.dart';
 final reportHelper = ChangeNotifierProvider((ref) => ReportHelper());
 
 class ReportHelper extends ChangeNotifier {
- String? notifi;
-   String? filter;
-   String? kw;
-   String? skw;
-   String? todate;
-   String? fromdate;
-   List reportlist=[];
+  String? notifi;
+  String? filter;
+  String? kw;
+  String? skw;
+  String? todate;
+  String? fromdate;
+  List reportlist = [];
   void getreport(BuildContext context) async {
     try {
       // if (username.text.isEmpty || password.text.isEmpty)
-        // return Utils().toast(msg: 'Please fill all fields');
+      // return Utils().toast(msg: 'Please fill all fields');
 
       Utils().showLoader(context);
 
-      String body = '/api/getreport?opt=&opt2=&from_date=&to_date=&keyword=&subkeyword=';
+      String body =
+          '/api/getreport?opt=&opt2=&from_date=&to_date=&keyword=&subkeyword=';
       String url = URL.base + body;
 
-      String token = API().createAccessToken(
-        username: "Admin",
-        password: "Abcd1234",
-      );
-
-      await Cache().setAccessToken(token);
-
       var response = await API().post(url);
- 
+
       Utils().dismissLoader(context);
- print(response['Message']);
-     // Utils().toast(msg: response['message']);
+      print(response['Message']);
+      // Utils().toast(msg: response['message']);
 
       if (response['Message'] == "success") {
-             reportlist=response['data'];
-             print(reportlist.length);
-               Navigator.push(context,
-                              MaterialPageRoute(builder: ((context) {
-                            return ReportListed();
-                          })));
+        reportlist = response['data'];
+        print(reportlist.length);
+        Navigator.push(context, MaterialPageRoute(builder: ((context) {
+          return ReportListed();
+        })));
         //  Navigator.pushAndRemoveUntil(
         //   context,
         //   MaterialPageRoute(builder: (_) => MainScreen()),
         //   (route) => false,
         // );
       } else {
-   
-       // await Cache().setLogin(true);
+        // await Cache().setLogin(true);
         // Navigator.pushAndRemoveUntil(
         //   context,
         //   MaterialPageRoute(builder: (_) => MainScreen()),
