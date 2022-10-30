@@ -31,21 +31,23 @@ class ReportHelper extends ChangeNotifier {
       var response = await API().post(url);
 
       Utils().dismissLoader(context);
-      print(response['Message']);
+      print(response['data']);
       // Utils().toast(msg: response['message']);
 
-      if (response['Message'] == "success") {
+      if (response['data'] != 0) {
         reportlist = response['data'];
         print(reportlist.length);
         Navigator.push(context, MaterialPageRoute(builder: ((context) {
           return ReportListed();
         })));
+      
         //  Navigator.pushAndRemoveUntil(
         //   context,
         //   MaterialPageRoute(builder: (_) => MainScreen()),
         //   (route) => false,
         // );
       } else {
+          Utils().toast(msg: 'Empty Report');
         // await Cache().setLogin(true);
         // Navigator.pushAndRemoveUntil(
         //   context,

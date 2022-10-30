@@ -16,9 +16,21 @@ class Report extends ConsumerStatefulWidget {
 
 class _ReportState extends ConsumerState<Report> {
   String _listName = "";
-  String _listName1 = "";
+  String _select1 = "";
+    String _select2 = "";
+      String _select3 = "";
   String _listName2 = "";
-  List list = ['l', 'm', 's'];
+  List list = [
+    'head',
+     'subhead', 
+     'description',
+     'frequency',
+     'name',
+     'priority',
+     'strip',
+     'file'
+     ];
+     List select=['select'];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -93,7 +105,7 @@ class _ReportState extends ConsumerState<Report> {
                       //  ),
                     ],
                   ),
-                  iconSize: 28,
+                  // iconSize: 28,
                   elevation: 4,
                   underline: Container(),
                   items: list.map<DropdownMenuItem<String>>((e) {
@@ -151,7 +163,7 @@ class _ReportState extends ConsumerState<Report> {
                     //   mainAxisAlignment: MainAxisAlignment.start,
                     //  crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text("${_listName}"),
+                      Text("${_select1}"),
 
                       //  Padding(
                       //       padding: const EdgeInsets.only(right:18.0),
@@ -171,14 +183,14 @@ class _ReportState extends ConsumerState<Report> {
                   }).toList(),
                   onChanged: (String? value) {
                     setState(() {
-                      _listName = value!;
+                      _select1 = value!;
                     });
                   }),
               image: Icon(
                 Icons.notifications,
                 color: Color.fromARGB(255, 138, 88, 247),
               ),
-              listed: list,
+              listed: select,
               listname: 'Select',
             ),
             CustomDropdown(
@@ -195,7 +207,7 @@ class _ReportState extends ConsumerState<Report> {
                     //   mainAxisAlignment: MainAxisAlignment.start,
                     //  crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text("${_listName}"),
+                      Text("${_select2}"),
 
                       //  Padding(
                       //       padding: const EdgeInsets.only(right:18.0),
@@ -215,7 +227,7 @@ class _ReportState extends ConsumerState<Report> {
                   }).toList(),
                   onChanged: (String? value) {
                     setState(() {
-                      _listName = value!;
+                      _select2 = value!;
                     });
                   }),
               image: Column(
@@ -252,7 +264,7 @@ class _ReportState extends ConsumerState<Report> {
                     //   mainAxisAlignment: MainAxisAlignment.start,
                     //  crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text("${_listName}"),
+                      Text("${_select3}"),
 
                       //  Padding(
                       //       padding: const EdgeInsets.only(right:18.0),
@@ -272,7 +284,7 @@ class _ReportState extends ConsumerState<Report> {
                   }).toList(),
                   onChanged: (String? value) {
                     setState(() {
-                      _listName = value!;
+                      _select3 = value!;
                     });
                   }),
               image: Column(

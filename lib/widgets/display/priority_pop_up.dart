@@ -38,44 +38,44 @@ class PopUpMenu extends ConsumerWidget {
         PopupMenuButton(
           itemBuilder: (context) {
             return [
-              PopupMenuItem<int>(
-                value: 1,
-                child: Row(
-                  children: [
-                    Icon(Icons.check, color: Color.fromARGB(255, 138, 88, 247)),
-                    SizedBox(width: 10),
-                    Text(
-                      "Save",
-                      style: TextStyle(
-                        letterSpacing: .5,
-                        fontWeight: FontWeight.w600,
-                        fontFamily: "Gilroy",
-                        fontSize: 13.sp,
-                        color: Color.fromARGB(255, 138, 88, 247),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              PopupMenuItem<int>(
-                value: 0,
-                child: Row(
-                  children: [
-                    Icon(Icons.edit, color: Color.fromARGB(255, 138, 88, 247)),
-                    SizedBox(width: 10),
-                    Text(
-                      "Edit",
-                      style: TextStyle(
-                        letterSpacing: .5,
-                        fontWeight: FontWeight.w600,
-                        fontFamily: "Gilroy",
-                        fontSize: 13.sp,
-                        color: Color.fromARGB(255, 138, 88, 247),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
+              // PopupMenuItem<int>(
+              //   value: 1,
+              //   child: Row(
+              //     children: [
+              //       Icon(Icons.check, color: Color.fromARGB(255, 138, 88, 247)),
+              //       SizedBox(width: 10),
+              //       Text(
+              //         "Save",
+              //         style: TextStyle(
+              //           letterSpacing: .5,
+              //           fontWeight: FontWeight.w600,
+              //           fontFamily: "Gilroy",
+              //           fontSize: 13.sp,
+              //           color: Color.fromARGB(255, 138, 88, 247),
+              //         ),
+              //       ),
+              //     ],
+              //   ),
+              // ),
+              // PopupMenuItem<int>(
+              //   value: 0,
+              //   child: Row(
+              //     children: [
+              //       Icon(Icons.edit, color: Color.fromARGB(255, 138, 88, 247)),
+              //       SizedBox(width: 10),
+              //       Text(
+              //         "Edit",
+              //         style: TextStyle(
+              //           letterSpacing: .5,
+              //           fontWeight: FontWeight.w600,
+              //           fontFamily: "Gilroy",
+              //           fontSize: 13.sp,
+              //           color: Color.fromARGB(255, 138, 88, 247),
+              //         ),
+              //       ),
+              //     ],
+              //   ),
+              // ),
               PopupMenuItem<int>(
                 value: 1,
                 child: Row(
