@@ -12,6 +12,9 @@ class DisplayHelper extends ChangeNotifier {
   DisplayModel? model;
 
   late TextEditingController description;
+  late TextEditingController head;
+  late TextEditingController subHead;
+  late TextEditingController kName;
 
   void getdisplay(BuildContext context) async {
     try {
@@ -112,26 +115,58 @@ class DisplayHelper extends ChangeNotifier {
     }
   }
 
-  String getPriorityString(int priority) {
+  String getPriorityString(int? priority) {
     switch (priority) {
       case 1:
-        return "Low";
+        return "High";
       case 2:
         return "Medium";
       case 3:
-        return "High";
+        return "Low";
       default:
         return "No Priority";
     }
   }
 
-  Color getPriorityColor(int priority) {
+  Color getPriorityColor(int? priority) {
     switch (priority) {
       case 1:
+        return Colors.red;
+      case 2:
         return Colors.yellow.shade900;
-
+      case 3:
+        return Colors.green;
       default:
-        return Colors.yellow.shade900;
+        return Colors.grey.shade600;
+    }
+  }
+
+  Future<void> deleteEntry(var id, BuildContext context) async {
+    try {
+      Utils().showLoader(context);
+
+      String body = 'api/delete?e_id=$id';
+      String url = URL.base + body;
+
+      var response = await API().post(url);
+
+      // print(_response);
+
+      Utils().dismissLoader(context);
+      Utils().toast(msg: 'Deleted');
+    } catch (e) {
+      Utils().dismissLoader(context);
+      Utils().toast(msg: e.toString());
+    }
+  }
+
+  Future<void> uopdateEntry(var id, BuildContext context) async {
+    try {
+      Utils().showLoader(context);
+      Utils().dismissLoader(context);
+    } catch (e) {
+      Utils().dismissLoader(context);
+      Utils().toast(msg: e.toString());
     }
   }
 

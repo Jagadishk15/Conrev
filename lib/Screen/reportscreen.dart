@@ -15,22 +15,22 @@ class Report extends ConsumerStatefulWidget {
 }
 
 class _ReportState extends ConsumerState<Report> {
-  String _listName = "";
-  String _select1 = "";
-    String _select2 = "";
-      String _select3 = "";
+  String? _listName;
+  String? _select1;
+  String? _select2;
+  String? _select3;
   String _listName2 = "";
   List list = [
     'head',
-     'subhead', 
-     'description',
-     'frequency',
-     'name',
-     'priority',
-     'strip',
-     'file'
-     ];
-     List select=['select'];
+    'subhead',
+    'description',
+    'frequency',
+    'name',
+    'priority',
+    'strip',
+    'file'
+  ];
+  List select = ['select'];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -85,41 +85,33 @@ class _ReportState extends ConsumerState<Report> {
             ),
             CustomDropdown(
               dropdown: DropdownButton(
-                  isExpanded: false,
-                  menuMaxHeight: 300,
-                  //alignment: AlignmentGeometry.,
-                  // hint: Padding(
-                  //   padding: const EdgeInsets.only(left:18.0),
-                  //   child:  Text("$_currentSugars"),
-                  // ),
-                  // alignment : AlignmentDirectional.bottomStart,
-                  icon: Row(
-                    //   mainAxisAlignment: MainAxisAlignment.start,
-                    //  crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text("${_listName}"),
-
-                      //  Padding(
-                      //       padding: const EdgeInsets.only(right:18.0),
-                      //    child: Icon(Icons.keyboard_arrow_down_sharp, color: Customcolor().blacktheme, size: 28),
-                      //  ),
-                    ],
-                  ),
-                  // iconSize: 28,
-                  elevation: 4,
-                  underline: Container(),
-                  items: list.map<DropdownMenuItem<String>>((e) {
-                    return DropdownMenuItem<String>(
-                        // enabled: true,
-                        // alignment : AlignmentDirectional.bottomStart,
-                        value: e,
-                        child: Text(e.toString()));
-                  }).toList(),
-                  onChanged: (String? value) {
-                    setState(() {
-                      _listName = value!;
-                    });
-                  }),
+                isExpanded: true,
+                value: _listName,
+                menuMaxHeight: 300,
+                //alignment: AlignmentGeometry.,
+                // hint: Padding(
+                //   padding: const EdgeInsets.only(left:18.0),
+                //   child:  Text("$_currentSugars"),
+                // ),
+                // alignment : AlignmentDirectional.bottomStart,
+                icon: Container(),
+                // iconSize: 28,
+                elevation: 4,
+                underline: Container(),
+                items: list.map<DropdownMenuItem<String>>((e) {
+                  return DropdownMenuItem<String>(
+                    // enabled: true,
+                    // alignment : AlignmentDirectional.bottomStart,
+                    value: e,
+                    child: Text(e.toString()),
+                  );
+                }).toList(),
+                onChanged: (String? value) {
+                  setState(() {
+                    _listName = value!;
+                  });
+                },
+              ),
               image: Icon(
                 Icons.filter_alt,
                 color: Color.fromARGB(255, 138, 88, 247),
@@ -153,24 +145,14 @@ class _ReportState extends ConsumerState<Report> {
               dropdown: DropdownButton(
                   isExpanded: false,
                   menuMaxHeight: 300,
+                  value: _select1,
                   //alignment: AlignmentGeometry.,
                   // hint: Padding(
                   //   padding: const EdgeInsets.only(left:18.0),
                   //   child:  Text("$_currentSugars"),
                   // ),
                   // alignment : AlignmentDirectional.bottomStart,
-                  icon: Row(
-                    //   mainAxisAlignment: MainAxisAlignment.start,
-                    //  crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text("${_select1}"),
-
-                      //  Padding(
-                      //       padding: const EdgeInsets.only(right:18.0),
-                      //    child: Icon(Icons.keyboard_arrow_down_sharp, color: Customcolor().blacktheme, size: 28),
-                      //  ),
-                    ],
-                  ),
+                  icon: Container(),
                   iconSize: 28,
                   elevation: 4,
                   underline: Container(),
@@ -197,24 +179,14 @@ class _ReportState extends ConsumerState<Report> {
               dropdown: DropdownButton(
                   isExpanded: false,
                   menuMaxHeight: 300,
+                  value: _select2,
                   //alignment: AlignmentGeometry.,
                   // hint: Padding(
                   //   padding: const EdgeInsets.only(left:18.0),
                   //   child:  Text("$_currentSugars"),
                   // ),
                   // alignment : AlignmentDirectional.bottomStart,
-                  icon: Row(
-                    //   mainAxisAlignment: MainAxisAlignment.start,
-                    //  crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text("${_select2}"),
-
-                      //  Padding(
-                      //       padding: const EdgeInsets.only(right:18.0),
-                      //    child: Icon(Icons.keyboard_arrow_down_sharp, color: Customcolor().blacktheme, size: 28),
-                      //  ),
-                    ],
-                  ),
+                  icon: Container(),
                   iconSize: 28,
                   elevation: 4,
                   underline: Container(),
@@ -254,24 +226,14 @@ class _ReportState extends ConsumerState<Report> {
               dropdown: DropdownButton(
                   isExpanded: false,
                   menuMaxHeight: 300,
+                  value: _select3,
                   //alignment: AlignmentGeometry.,
                   // hint: Padding(
                   //   padding: const EdgeInsets.only(left:18.0),
                   //   child:  Text("$_currentSugars"),
                   // ),
                   // alignment : AlignmentDirectional.bottomStart,
-                  icon: Row(
-                    //   mainAxisAlignment: MainAxisAlignment.start,
-                    //  crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text("${_select3}"),
-
-                      //  Padding(
-                      //       padding: const EdgeInsets.only(right:18.0),
-                      //    child: Icon(Icons.keyboard_arrow_down_sharp, color: Customcolor().blacktheme, size: 28),
-                      //  ),
-                    ],
-                  ),
+                  icon: Container(),
                   iconSize: 28,
                   elevation: 4,
                   underline: Container(),

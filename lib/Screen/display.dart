@@ -1,12 +1,9 @@
 import 'package:conrev/widgets/display/display_tile.dart';
-import 'package:expandable/expandable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:sizer/sizer.dart';
-
 import '../custom/custom.dart';
 import '../helper/display_helper.dart';
-import 'UpdateEntry.dart';
 
 class Display extends ConsumerStatefulWidget {
   const Display({Key? key}) : super(key: key);
@@ -615,45 +612,45 @@ class _DisplayState extends ConsumerState<Display> {
     // );
   }
 
-  Widget description() {
-    return Container(
-      margin: EdgeInsets.only(left: 10, top: 10, right: 8.sp, bottom: 10),
-      height: 15.h,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(9),
-        color: Colors.white,
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black12,
-            spreadRadius: 1,
-            blurRadius: 5,
-            offset: Offset(2, 2), // changes position of shadow
-          ),
-        ],
-      ),
-      child: TextField(
-          keyboardType: TextInputType.multiline,
-          maxLines: 10,
-          style: TextStyle(
-              //color: Color(0xffABB4BD),
-              fontFamily: 'Gilroy',
-              fontSize: 14,
-              letterSpacing: .5,
-              fontWeight: FontWeight.w400),
-          // controller: _textcontroller2,
-          decoration: InputDecoration(
-            border: InputBorder.none,
-            hintText: ' Description',
-            hintStyle: TextStyle(
-                color: Color(0xffABB4BD),
-                fontFamily: 'Gilroy',
-                fontSize: 14,
-                fontWeight: FontWeight.w700),
-            contentPadding: EdgeInsets.only(left: 10, top: 18),
-            //  suffixIcon:  Image.asset("Assets/Images/searchright.png",
-          )),
-    );
-  }
+  // Widget description() {
+  //   return Container(
+  //     margin: EdgeInsets.only(left: 10, top: 10, right: 8.sp, bottom: 10),
+  //     height: 15.h,
+  //     decoration: BoxDecoration(
+  //       borderRadius: BorderRadius.circular(9),
+  //       color: Colors.white,
+  //       boxShadow: [
+  //         BoxShadow(
+  //           color: Colors.black12,
+  //           spreadRadius: 1,
+  //           blurRadius: 5,
+  //           offset: Offset(2, 2), // changes position of shadow
+  //         ),
+  //       ],
+  //     ),
+  //     child: TextField(
+  //         keyboardType: TextInputType.multiline,
+  //         maxLines: 10,
+  //         style: TextStyle(
+  //             //color: Color(0xffABB4BD),
+  //             fontFamily: 'Gilroy',
+  //             fontSize: 14,
+  //             letterSpacing: .5,
+  //             fontWeight: FontWeight.w400),
+  //         // controller: _textcontroller2,
+  //         decoration: InputDecoration(
+  //           border: InputBorder.none,
+  //           hintText: ' Description',
+  //           hintStyle: TextStyle(
+  //               color: Color(0xffABB4BD),
+  //               fontFamily: 'Gilroy',
+  //               fontSize: 14,
+  //               fontWeight: FontWeight.w700),
+  //           contentPadding: EdgeInsets.only(left: 10, top: 18),
+  //           //  suffixIcon:  Image.asset("Assets/Images/searchright.png",
+  //         )),
+  //   );
+  // }
 }
 
 

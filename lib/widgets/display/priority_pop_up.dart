@@ -14,17 +14,17 @@ class PopUpMenu extends ConsumerWidget {
     final logic = ref.read(displaytHelper);
 
     return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
+        // if (e.priority != null && e.priority != 0)
         Card(
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(5),
           ),
-          color: logic.getPriorityColor(e.priority ?? 0),
+          color: logic.getPriorityColor(e.priority),
           child: Container(
             padding: EdgeInsets.symmetric(horizontal: 8, vertical: 4),
             child: Text(
-              logic.getPriorityString(e.priority ?? 0),
+              logic.getPriorityString(e.priority),
               style: TextStyle(
                 letterSpacing: .5,
                 fontWeight: FontWeight.w600,
@@ -35,6 +35,7 @@ class PopUpMenu extends ConsumerWidget {
             ),
           ),
         ),
+        const Spacer(),
         PopupMenuButton(
           itemBuilder: (context) {
             return [

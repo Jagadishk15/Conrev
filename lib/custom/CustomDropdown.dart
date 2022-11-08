@@ -76,12 +76,8 @@ class _CustomDropdownState extends ConsumerState<CustomDropdown> {
                     child: Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: widget.image)),
-                SizedBox(
-                  width: 1,
-                ),
-                Expanded(
-                  child: widget.dropdown
-                ),
+                SizedBox(width: 10),
+                Expanded(child: widget.dropdown),
               ],
             ),
           ),

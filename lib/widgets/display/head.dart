@@ -4,16 +4,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-class Description extends HookConsumerWidget {
+class Head extends HookConsumerWidget {
   final Item e;
-  const Description({Key? key, required this.e}) : super(key: key);
+  const Head({Key? key, required this.e}) : super(key: key);
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final logic = ref.read(displaytHelper);
 
     useEffect(() {
-      logic.description = TextEditingController(text: e.description);
+      logic.head = TextEditingController(text: e.headName);
       return;
     });
 
@@ -21,7 +21,7 @@ class Description extends HookConsumerWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          'Description',
+          'Head',
           style: TextStyle(
             fontFamily: 'Gilroy',
             fontSize: 12,
@@ -31,7 +31,7 @@ class Description extends HookConsumerWidget {
         ),
         SizedBox(height: 10),
         TextField(
-          controller: logic.description,
+          controller: logic.head,
           keyboardType: TextInputType.multiline,
           style: TextStyle(
             fontFamily: 'Gilroy',
