@@ -64,7 +64,8 @@ class EntryHelper extends ChangeNotifier {
         "priority": priority.toString(),
         "esubkeyword": Swk.text,
         "ekeyword%5B%5D": Kw.text,
-        "file": added
+        "file": added,
+        "name":name.text
       });
 // print(formData.files);
 // print('object');
