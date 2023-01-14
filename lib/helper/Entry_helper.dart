@@ -39,7 +39,7 @@ class EntryHelper extends ChangeNotifier {
   String? notif = 'M';
   String? priority;
   void getEntry(BuildContext context) async {
-    String url = 'https://04ir.digital/CRV/api/insert';
+    String url = 'https://conrev.in/CRV/api/insert';
 
     final List added = [];
     var image;

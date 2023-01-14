@@ -1,5 +1,5 @@
 class URL {
-  static const String base = 'https://04ir.digital/CRV';
+  static const String base = 'https://conrev.in/CRV';
 
   static const String login = base + '/api/login?';
   static const String getAllKeywords = base + "/api/getAllKeyword";
